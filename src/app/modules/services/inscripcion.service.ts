@@ -11,7 +11,7 @@ export class InscripcionService {
 
   constructor(private http:HttpClient) { }
 
-  baseUrl:string = ''
+  baseUrl:string = 'http://192.168.1.194:3000'
 
   getInscritos():Observable<any>{
     return this.http.get(this.baseUrl+'/api/personas')
