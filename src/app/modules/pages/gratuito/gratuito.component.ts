@@ -3,8 +3,9 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators } from "@angula
 
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-import { InscripcionService } from '../../../services/inscripcion.service';
-import { Inscrito } from '../../../../core/models/inscrito.models';
+import { InscripcionService } from '../../services/inscripcion.service';
+import { Inscrito } from '../../../core/models/inscrito.models';
+
 
 @Component({
   selector: 'app-gratuito',

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { InscripcionService } from '../../../services/inscripcion.service';
+
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Inscrito } from '../../../../core/models/inscrito.models';
+import { InscripcionService } from '../../services/inscripcion.service';
+import { Inscrito } from '../../../core/models/inscrito.models';
+
 
 @Component({
   selector: 'app-plan-modificar',

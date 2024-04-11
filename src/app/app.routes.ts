@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 
 import { ListaComponent } from './modules/pages/lista/lista.component';
-import { GratuitoComponent } from './modules/pages/agregaciones/gratuito/gratuito.component';
-import { CertificadoComponent } from './modules/pages/agregaciones/certificado/certificado.component';
-import { TallerComponent } from './modules/pages/agregaciones/taller/taller.component';
-import { PlanModificarComponent } from './modules/pages/modificaciones/plan-modificar/plan-modificar.component';
+import { GratuitoComponent } from './modules/pages/gratuito/gratuito.component';
+import { CertificadoComponent } from './modules/pages/certificado/certificado.component';
+import { TallerComponent } from './modules/pages/taller/taller.component';
+import { PlanModificarComponent } from './modules/pages/plan-modificar/plan-modificar.component';
 
 export const routes: Routes = [
   {

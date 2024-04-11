@@ -1,19 +1,20 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-import { InscripcionService } from '../../../services/inscripcion.service';
+import { InscripcionService } from '../../services/inscripcion.service';
+import { Inscrito } from '../../../core/models/inscrito.models';
+
 
 @Component({
-  selector: 'app-certificado',
+  selector: 'app-taller',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './certificado.component.html',
-  styleUrl: './certificado.component.scss'
+  templateUrl: './taller.component.html',
+  styleUrl: './taller.component.scss'
 })
-export class CertificadoComponent {
-
+export class TallerComponent {
   dataForm!: FormGroup
 
   constructor(
@@ -33,16 +34,15 @@ export class CertificadoComponent {
     })
   }
 
-
   save() {
-    let sendData = {
+    let sendData: Inscrito = {
       nombres: this.dataForm.get('nombre')?.value,
       apellidos: this.dataForm.get('apellidos')?.value,
       residencia: this.dataForm.get('residencia')?.value,
       correo: this.dataForm.get('correo')?.value,
       organizacion: this.dataForm.get('organizacion')?.value,
       ci: this.dataForm.get('ci')?.value,
-      plan: 'CERTIFICADO',
+      plan: 'CERTIFICADO+TALLER',
       celular: this.dataForm.get('celular')?.value,
     }
 
