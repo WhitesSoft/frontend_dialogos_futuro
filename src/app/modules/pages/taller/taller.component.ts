@@ -3,11 +3,12 @@ import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { InscripcionService } from '../../services/inscripcion.service';
 import { Inscrito } from '../../../core/models/inscrito.models';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-taller',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './taller.component.html',
   styleUrl: './taller.component.scss'
 })
