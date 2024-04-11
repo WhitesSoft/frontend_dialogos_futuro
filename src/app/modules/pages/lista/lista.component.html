@@ -9,6 +9,9 @@
               <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
                 <span>Inscritos</span>
               </th>
+              <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
+                <span>Opciones</span>
+              </th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-700 bg-sidebar-color">
@@ -16,8 +19,12 @@
             <tr *ngFor="let inscrito of inscritos">
 
               <td class="px-8 py-4 text-sm text-foreground whitespace-nowrap">
-                {{ inscrito.nombres }} {{ inscrito.apellidos }}
+                {{ inscrito.id }} {{ inscrito.nombres }} {{ inscrito.apellidos }}
               </td>
+              <td class="px-8 py-4 text-sm text-foreground whitespace-nowrap">
+                <button class="px-4 py-2 text-white rounded-md bg-primary hover:bg-primary/90" (click)="modificar(inscrito.id!)">Modificar</button>
+              </td>
+
 
             </tr>
 

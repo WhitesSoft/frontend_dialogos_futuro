@@ -49,6 +49,7 @@ export class TallerComponent {
     this.inscripcionService.addInscrito(sendData).subscribe(response => {
       this.toastrService.success('Inscripcion exitosa', 'Exito', { timeOut: 3000, progressBar: true });
       console.log(response)
+      this.dataForm.reset()
     })
   }
 }
