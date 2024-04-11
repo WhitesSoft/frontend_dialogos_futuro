@@ -4,14 +4,30 @@
         <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
         <input type="text" id="nombre" formControlName="nombre"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Nombre" required />
+            placeholder="Nombre" required 
+            [ngClass]="[(dataForm.get('nombre')?.invalid  && (dataForm.get('nombre')?.dirty || dataForm.get('nombre')?.touched))? 'bg-red-50 border border-red-500 text-red-900 placeholder-red-700' : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-400' ]"
+            />
+
+            <div *ngIf="dataForm.get('nombre')?.invalid && (dataForm.get('nombre')?.dirty || dataForm.get('nombre')?.touched)" class="text-red-500 text-sm mt-1">
+                <div *ngIf="dataForm.get('nombre')?.hasError('required')">
+                    Nombre es requerido.
+                </div>
+            </div>
     </div>
 
     <div class="mb-5">
         <label for="ap" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Apellidos</label>
         <input type="text" id="ap" formControlName="apellidos"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Apellidos" required />
+            placeholder="Apellidos" required 
+            [ngClass]="[(dataForm.get('apellidos')?.invalid  && (dataForm.get('apellidos')?.dirty || dataForm.get('apellidos')?.touched))? 'bg-red-50 border border-red-500 text-red-900 placeholder-red-700' : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-400' ]"
+            />
+
+            <div *ngIf="dataForm.get('apellidos')?.invalid && (dataForm.get('apellidos')?.dirty || dataForm.get('apellidos')?.touched)" class="text-red-500 text-sm mt-1">
+                <div *ngIf="dataForm.get('apellidos')?.hasError('required')">
+                    Apellidos son requeridos.
+                </div>
+            </div>
     </div>
 
     <div class="mb-5">
@@ -19,7 +35,15 @@
             Residencia</label>
         <input type="text" id="residencia" formControlName="residencia"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Lugar" required />
+            placeholder="Lugar" required 
+            [ngClass]="[(dataForm.get('residencia')?.invalid  && (dataForm.get('residencia')?.dirty || dataForm.get('residencia')?.touched))? 'bg-red-50 border border-red-500 text-red-900 placeholder-red-700' : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-400' ]"
+            />
+
+            <div *ngIf="dataForm.get('residencia')?.invalid && (dataForm.get('residencia')?.dirty || dataForm.get('residencia')?.touched)" class="text-red-500 text-sm mt-1">
+                <div *ngIf="dataForm.get('residencia')?.hasError('required')">
+                    Residencia es requerido.
+                </div>
+            </div>
     </div>
 
     <div class="mb-5">
@@ -27,7 +51,19 @@
             Electrónico</label>
         <input type="email" id="email" formControlName="correo"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="host@domain.com" required />
+            placeholder="host@domain.com" required
+            [ngClass]="[(dataForm.get('correo')?.invalid  && (dataForm.get('correo')?.dirty || dataForm.get('correo')?.touched))? 'bg-red-50 border border-red-500 text-red-900 placeholder-red-700' : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-400' ]"
+            />
+
+            <div *ngIf="dataForm.get('correo')?.invalid && (dataForm.get('correo')?.dirty || dataForm.get('correo')?.touched)" class="text-red-500 text-sm mt-1">
+                <div *ngIf="dataForm.get('correo')?.hasError('required')">
+                    Correo es requerido.
+                </div>
+
+                <div *ngIf="dataForm.get('correo')?.hasError('email')">
+                    Formato incorrecto
+                </div>
+            </div>
     </div>
 
     <div class="mb-5">
@@ -43,7 +79,15 @@
             Identidad</label>
         <input type="text" id="ci" formControlName="ci"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="CI o DNI" required />
+            placeholder="CI o DNI" required 
+            [ngClass]="[(dataForm.get('ci')?.invalid  && (dataForm.get('ci')?.dirty || dataForm.get('ci')?.touched))? 'bg-red-50 border border-red-500 text-red-900 placeholder-red-700' : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-400' ]"
+            />
+
+            <div *ngIf="dataForm.get('ci')?.invalid && (dataForm.get('ci')?.dirty || dataForm.get('ci')?.touched)" class="text-red-500 text-sm mt-1">
+                <div *ngIf="dataForm.get('ci')?.hasError('required')">
+                    Documento de identidad es requerido.
+                </div>
+            </div>
     </div>
 
     <div class="mb-5">
@@ -51,10 +95,24 @@
             Celular</label>
         <input type="text" id="celular" formControlName="celular"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Celular" required />
+            placeholder="Celular" required 
+            [ngClass]="[(dataForm.get('celular')?.invalid  && (dataForm.get('celular')?.dirty || dataForm.get('celular')?.touched))? 'bg-red-50 border border-red-500 text-red-900 placeholder-red-700' : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-400' ]"
+            />
+
+            <div *ngIf="dataForm.get('celular')?.invalid && (dataForm.get('celular')?.dirty || dataForm.get('celular')?.touched)" class="text-red-500 text-sm mt-1">
+                <div *ngIf="dataForm.get('celular')?.hasError('required')">
+                    Celular es requerido.
+                </div>
+
+                <div *ngIf="dataForm.get('celular')?.hasError('pattern')">
+                    Formato no valido.
+                </div>
+            </div>
     </div>
 
-    <button type="submit"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" (click)="save()">GUARDAR</button>
+    <div class="flex w-full">
+        <button type="submit"
+        class="align-middle justify-center items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"  (click)="save()" [disabled]="dataForm.invalid" [ngClass]="{'cursor-not-allowed' : dataForm.invalid}">Guardar</button>
+    </div>
 
 </form>
