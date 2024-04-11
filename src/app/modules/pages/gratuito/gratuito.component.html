@@ -112,11 +112,13 @@
     </div>
   </div>
 
-  <div class="flex w-full">
-    <button type="submit"
-      class="align-middle justify-center items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      (click)="save()" [disabled]="dataForm.invalid"
-      [ngClass]="{'cursor-not-allowed' : dataForm.invalid}">Guardar</button>
-  </div>
 
+    <div class="flex w-full">
+        <button class="bg-primary text-white rounded-md px-4 py-2 w-full hover:bg-primary/90"
+        (click)="!dataForm.invalid; save()"
+        [disabled]="dataForm.invalid" [ngClass]="{'cursor-not-allowed' : dataForm.invalid}">
+            Guardar
+        </button>
+    </div>
 </form>
+
