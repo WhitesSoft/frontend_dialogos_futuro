@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { InscripcionService } from '../../services/inscripcion.service';
-import { Inscrito } from '../../../core/models/inscrito.models';
+
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { InscripcionService } from '../../services/inscripcion.service';
+import { Inscrito } from '../../../core/models/inscrito.models';
+
 
 @Component({
   selector: 'app-taller',
@@ -13,11 +15,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './taller.component.scss'
 })
 export class TallerComponent {
-  dataForm!:FormGroup
+  dataForm!: FormGroup
 
-  constructor(private inscripcionService:InscripcionService, private toastrService: ToastrService){}
+  constructor(
+    private inscripcionService: InscripcionService,
+    private toastrService: ToastrService
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.dataForm = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
       apellidos: new FormControl('', [Validators.required]),
@@ -29,8 +34,8 @@ export class TallerComponent {
     })
   }
 
-  save(){
-    let sendData:Inscrito = {
+  save() {
+    let sendData: Inscrito = {
       nombres: this.dataForm.get('nombre')?.value,
       apellidos: this.dataForm.get('apellidos')?.value,
       residencia: this.dataForm.get('residencia')?.value,
@@ -42,7 +47,7 @@ export class TallerComponent {
     }
 
     this.inscripcionService.addInscrito(sendData).subscribe(response => {
-      this.toastrService.success('Inscripcion exitosa', 'Exito', { timeOut: 3000, progressBar: true });  
+      this.toastrService.success('Inscripcion exitosa', 'Exito', { timeOut: 3000, progressBar: true });
       console.log(response)
     })
   }

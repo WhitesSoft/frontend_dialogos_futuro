@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
+
+import { ListaComponent } from './modules/pages/lista/lista.component';
+import { GratuitoComponent } from './modules/pages/gratuito/gratuito.component';
 import { CertificadoComponent } from './modules/pages/certificado/certificado.component';
 import { TallerComponent } from './modules/pages/taller/taller.component';
-import { GratuitoComponent } from './modules/pages/gratuito/gratuito.component';
-import { ListaComponent } from './modules/pages/lista/lista.component';
+import { PlanModificarComponent } from './modules/pages/plan-modificar/plan-modificar.component';
 
 export const routes: Routes = [
   {
@@ -21,4 +23,9 @@ export const routes: Routes = [
     path: "lista",
     component: ListaComponent,
   },
+  {
+    path: "modificar-inscripcion/:id",
+    component: PlanModificarComponent,
+  },
+
 ];
