@@ -1,0 +1,30 @@
+<div class="flex flex-col m-6 mt-8">
+  <div class="-mx-4 -my-2 overflow-x-hidden sm:-mx-6 lg:-mx-8">
+    <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+      <div class="overflow-hidden border rounded-md border-primary">
+
+        <table class="min-w-full divide-y">
+          <thead class="bg-primary/30 ">
+            <tr>
+              <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
+                <span>Inscritos</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-700 bg-sidebar-color">
+
+            <tr *ngFor="let inscrito of inscritos">
+
+              <td class="px-8 py-4 text-sm text-foreground whitespace-nowrap">
+                {{ inscrito.nombres }} {{ inscrito.apellidos }}
+              </td>
+
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
