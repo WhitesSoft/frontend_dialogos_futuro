@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { InscripcionService } from '../../services/inscripcion.service';
+
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { InscripcionService } from '../../../services/inscripcion.service';
 
 @Component({
   selector: 'app-certificado',
@@ -12,12 +13,15 @@ import { CommonModule } from '@angular/common';
   styleUrl: './certificado.component.scss'
 })
 export class CertificadoComponent {
-  
-  dataForm!:FormGroup
 
-  constructor(private inscripcionService:InscripcionService, private toastrService: ToastrService){}
+  dataForm!: FormGroup
 
-  ngOnInit(){
+  constructor(
+    private inscripcionService: InscripcionService,
+    private toastrService: ToastrService
+  ) { }
+
+  ngOnInit() {
     this.dataForm = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
       apellidos: new FormControl('', [Validators.required]),
@@ -30,7 +34,7 @@ export class CertificadoComponent {
   }
 
 
-  save(){
+  save() {
     let sendData = {
       nombres: this.dataForm.get('nombre')?.value,
       apellidos: this.dataForm.get('apellidos')?.value,
@@ -43,7 +47,7 @@ export class CertificadoComponent {
     }
 
     this.inscripcionService.addInscrito(sendData).subscribe(response => {
-      this.toastrService.success('Inscripcion exitosa', 'Exito', { timeOut: 3000, progressBar: true });  
+      this.toastrService.success('Inscripcion exitosa', 'Exito', { timeOut: 3000, progressBar: true });
       console.log(response)
     })
   }
