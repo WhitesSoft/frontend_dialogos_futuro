@@ -1,0 +1,65 @@
+<div class="max-w-full">
+
+  <h4 class="mt-2 text-3xl font-bold text-center text-foreground">BIENVENIDO</h4>
+
+  <div
+    class="p-3 mt-8 rounded-md shadow-sm lg:max-w-[75%] m-auto md:max-w-full bg-background"
+    >
+    <div
+      class="flex items-center space-x-2 font-semibold leading-8 text-foreground"
+    >
+      <span clas="text-green-500">
+        <svg
+          class="h-5"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+          />
+        </svg>
+      </span>
+      <span class="tracking-wide">Datos personales</span>
+    </div>
+    <div class="mt-2 mb-2 border-b border-dashed border-border"></div>
+    <div class="text-muted-foreground/90">
+      <div class="grid text-sm md:grid-cols-2">
+        <div class="grid grid-cols-2">
+          <div class="px-4 py-2 font-semibold">Nombre</div>
+          <div class="px-4 py-2">{{inscrito.nombres | titlecase}}</div>
+        </div>
+        <div class="grid grid-cols-2">
+          <div class="px-4 py-2 font-semibold">Celular</div>
+          <div class="px-4 py-2">{{inscrito.celular}}</div>
+        </div>
+        <div class="grid grid-cols-2">
+          <div class="px-4 py-2 font-semibold">Residencia</div>
+          <div class="px-4 py-2 ">{{inscrito.residencia | titlecase}}</div>
+        </div>
+        <div class="grid grid-cols-2 ">
+          <div class="px-4 py-2 font-semibold">Organización</div>
+          <div *ngIf="inscrito.organizacion == 'nan'" class="px-4 py-2 ">No tiene Org.</div>
+          <div *ngIf="inscrito.organizacion != 'nan'" class="px-4 py-2 ">{{inscrito.organizacion | titlecase}}</div>
+        </div>
+        <div class="grid grid-cols-2">
+          <div class="px-4 py-2 font-semibold">Correo</div>
+          <div class="px-4 py-2">{{inscrito.correo}}</div>
+        </div>
+        <div class="grid grid-cols-2">
+          <div class="px-4 py-2 font-semibold">Documento de identidad</div>
+          <div class="px-4 py-2">{{inscrito.ci}}</div>
+        </div>
+        <div class="grid grid-cols-2">
+          <div class="px-4 py-2 font-semibold">Plan</div>
+          <div class="px-4 py-2 ">{{inscrito.plan | titlecase}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

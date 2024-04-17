@@ -1,7 +1,7 @@
 export interface Inscrito {
   id?: number
   nombres: string;
-  apellidos: string;
+  apellidos?: string;
   residencia: string;
   correo: string;
   organizacion: string;
