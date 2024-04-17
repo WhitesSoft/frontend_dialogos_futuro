@@ -1,13 +1,16 @@
-<div class="flex flex-col m-6 mt-8">
+<div class="flex flex-col m-6 mt-8 w-[80%] m-auto">
   <div class="-mx-4 -my-2 overflow-x-hidden sm:-mx-6 lg:-mx-8">
-    <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+    <div class=" inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
       <div class="overflow-hidden border rounded-md border-primary">
 
-        <table class="min-w-full divide-y">
+        <table class="min-w-full ">
           <thead class="bg-primary/30 ">
             <tr>
               <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
                 <span>Inscritos</span>
+              </th>
+              <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
+                <span>QR</span>
               </th>
               <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
                 <span>Opciones</span>
@@ -19,7 +22,10 @@
             <tr *ngFor="let inscrito of inscritos">
 
               <td class="px-8 py-4 text-sm text-foreground whitespace-nowrap">
-                {{ inscrito.id }} {{ inscrito.nombres }} {{ inscrito.apellidos }}
+                {{ inscrito.Persona.id }} {{ inscrito.Persona.nombres | titlecase }}
+              </td>
+              <td class="px-8 py-4 text-sm text-foreground whitespace-nowrap">
+                {{ inscrito.codigo_qr }} 
               </td>
               <td class="px-8 py-4 text-sm text-foreground whitespace-nowrap">
                 <button class="px-4 py-2 text-white rounded-md bg-primary hover:bg-primary/90" (click)="modificar(inscrito.id!)">Modificar</button>
