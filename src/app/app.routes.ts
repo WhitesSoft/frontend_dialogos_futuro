@@ -5,6 +5,7 @@ import { GratuitoComponent } from './modules/pages/gratuito/gratuito.component';
 import { CertificadoComponent } from './modules/pages/certificado/certificado.component';
 import { TallerComponent } from './modules/pages/taller/taller.component';
 import { PlanModificarComponent } from './modules/pages/plan-modificar/plan-modificar.component';
+import { ProfileComponent } from './modules/pages/profile/profile.component';
 
 export const routes: Routes = [
   {
@@ -26,6 +27,10 @@ export const routes: Routes = [
   {
     path: "modificar-inscripcion/:id",
     component: PlanModificarComponent,
+  },
+  {
+    path: "profile/:id",
+    component: ProfileComponent,
   },
 
 ];
