@@ -28,7 +28,6 @@ export class GratuitoComponent {
   ngOnInit() {
     this.dataForm = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
-      apellidos: new FormControl('', [Validators.required]),
       residencia: new FormControl('', [Validators.required]),
       correo: new FormControl('', [Validators.required, Validators.email]),
       organizacion: new FormControl('', []),
@@ -41,12 +40,11 @@ export class GratuitoComponent {
   save() {
     let sendData: Inscrito = {
       nombres: this.dataForm.get('nombre')?.value,
-      apellidos: this.dataForm.get('apellidos')?.value,
       residencia: this.dataForm.get('residencia')?.value,
       correo: this.dataForm.get('correo')?.value,
       organizacion: this.dataForm.get('organizacion')?.value,
       ci: this.dataForm.get('ci')?.value,
-      plan: 'GRATUITO',
+      plan: 'gratuito',
       celular: this.dataForm.get('celular')?.value,
     }
 

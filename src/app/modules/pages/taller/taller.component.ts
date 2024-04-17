@@ -25,7 +25,6 @@ export class TallerComponent {
   ngOnInit() {
     this.dataForm = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
-      apellidos: new FormControl('', [Validators.required]),
       residencia: new FormControl('', [Validators.required]),
       correo: new FormControl('', [Validators.required, Validators.email]),
       organizacion: new FormControl('', []),
@@ -37,12 +36,11 @@ export class TallerComponent {
   save() {
     let sendData: Inscrito = {
       nombres: this.dataForm.get('nombre')?.value,
-      apellidos: this.dataForm.get('apellidos')?.value,
       residencia: this.dataForm.get('residencia')?.value,
       correo: this.dataForm.get('correo')?.value,
       organizacion: this.dataForm.get('organizacion')?.value,
       ci: this.dataForm.get('ci')?.value,
-      plan: 'CERTIFICADO+TALLER',
+      plan: 'certificado+taller',
       celular: this.dataForm.get('celular')?.value,
     }
 

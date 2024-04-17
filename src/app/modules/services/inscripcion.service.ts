@@ -19,6 +19,10 @@ export class InscripcionService {
     return this.http.get(this.baseUrl + '/api/personas')
   }
 
+  getIdentificadores(): Observable<any> {
+    return this.http.get(this.baseUrl + '/api/identificadores')
+  }
+
 
   addInscrito(data: Inscrito): Observable<any> {
     return this.http.post(this.baseUrl + '/api/personas', data)
