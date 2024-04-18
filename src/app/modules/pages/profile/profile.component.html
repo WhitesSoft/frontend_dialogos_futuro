@@ -2,26 +2,12 @@
 
   <h4 class="mt-2 text-3xl font-bold text-center text-foreground">BIENVENIDO</h4>
 
-  <div
-    class="p-3 mt-8 rounded-md shadow-sm lg:max-w-[75%] m-auto md:max-w-full bg-background"
-    >
-    <div
-      class="flex items-center space-x-2 font-semibold leading-8 text-foreground"
-    >
+  <div class="p-3 mt-8 rounded-md shadow-sm lg:max-w-[75%] m-auto md:max-w-full bg-background">
+    <div class="flex items-center space-x-2 font-semibold leading-8 text-foreground">
       <span clas="text-green-500">
-        <svg
-          class="h-5"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-          />
+        <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         </svg>
       </span>
       <span class="tracking-wide">Datos personales</span>
@@ -58,6 +44,44 @@
           <div class="px-4 py-2 font-semibold">Plan</div>
           <div class="px-4 py-2 ">{{inscrito.plan | titlecase}}</div>
         </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="flex justify-center">
+    <div class="mx-auto mt-10 flex flex-col gap-4 md:flex-row">
+      <div class="max-w-sm p-6 bg-background rounded-lg shadow">
+        <a href="#">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Expositores</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Conoce a los expositores del Evento Dialogos con el futuro</p>
+        <a href="/expositores"
+          class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-primary/80 focus:ring-4 focus:outline-none focus:bg-primary/40  dark:bg-primary  dark:hover:bg-primary/80 dark:focus:bg-primary/40">
+          Ver expositores
+          <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9" />
+          </svg>
+        </a>
+      </div>
+      <div class="max-w-sm p-6 bg-background rounded-lg shadow">
+        <a href="#">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Encuesta</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Participa en una encuesta sobre las startups presentadas en el evento</p>
+        <a href="/rating"
+        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-primary/80 focus:ring-4 focus:outline-none focus:bg-primary/40  dark:bg-primary  dark:hover:bg-primary/80 dark:focus:bg-primary/40">
+          Responder Encuesta
+          <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9" />
+          </svg>
+        </a>
       </div>
     </div>
   </div>

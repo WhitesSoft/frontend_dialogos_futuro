@@ -30,7 +30,7 @@ export class ProfileComponent {
       console.log(id);
       this.inscripcionService.getInscritoQr(id).subscribe(
         data => {this.inscrito = data
-          console.log(this.inscrito)
+          this.inscripcionService.saveUserData(this.inscrito)
         },
         err => {
           console.log('no se puede traer uwu', err);
