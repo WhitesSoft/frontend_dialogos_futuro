@@ -40,7 +40,7 @@ export class TallerComponent {
       correo: this.dataForm.get('correo')?.value,
       organizacion: this.dataForm.get('organizacion')?.value,
       ci: this.dataForm.get('ci')?.value,
-      plan: 'certificado+taller',
+      plan: 'taller',
       celular: this.dataForm.get('celular')?.value,
     }
 

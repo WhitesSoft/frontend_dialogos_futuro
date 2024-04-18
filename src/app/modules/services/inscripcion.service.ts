@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Inscrito } from '../../core/models/inscrito.models';
 
@@ -12,7 +12,7 @@ export class InscripcionService {
   constructor(private http: HttpClient) { }
 
 
-  baseUrl:string = 'http://192.168.1.194:3000'
+  baseUrl:string = 'https://8d3j97mk-3000.brs.devtunnels.ms'
 
 
   getInscritos(): Observable<any> {
@@ -28,8 +28,16 @@ export class InscripcionService {
     return this.http.post(this.baseUrl + '/api/personas', data)
   }
 
+  getInscritoQr(qr: string): Observable<Inscrito> {
+    return this.http.get<Inscrito>(this.baseUrl + `/api/personas/qr/${qr}`)
+  }
+
   getInscrito(id: number): Observable<Inscrito> {
     return this.http.get<Inscrito>(this.baseUrl + `/api/personas/${id}`)
+  }
+
+  liberarManilla(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl + `/api/identificadores/persona/${id}`)
   }
 
 }
