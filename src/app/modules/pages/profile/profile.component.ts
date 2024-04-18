@@ -3,11 +3,15 @@ import { InscripcionService } from '../../services/inscripcion.service';
 import { ActivatedRoute } from '@angular/router';
 import { Inscrito } from '../../../core/models/inscrito.models';
 import { CommonModule } from '@angular/common';
+import { NombrePipe } from '../../../core/pipes/nombre.pipe';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    NombrePipe
+  ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
