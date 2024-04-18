@@ -9,6 +9,7 @@ import { ProfileComponent } from './modules/pages/profile/profile.component';
 import { RatingComponent } from './modules/pages/rating/rating.component';
 import { AdminComponent } from './modules/pages/admin/admin.component';
 import { ListabandComponent } from './modules/pages/listaband/listaband.component';
+import { ExpositoresComponent } from './modules/pages/expositores/expositores.component';
 
 export const routes: Routes = [
   {
@@ -46,5 +47,9 @@ export const routes: Routes = [
   {
     path: "lista-bands",
     component: ListabandComponent,
+  },
+  {
+    path: "expositores",
+    component: ExpositoresComponent,
   },
 ];
