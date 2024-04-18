@@ -48,13 +48,13 @@ export class ListabandComponent {
 
     const doc = new jsPDF();
     doc.setFontSize(12);
-    doc.text('Lista de bands asignados', 55, 20);
+    doc.text('Lista de bands asignados', 76, 20);
 
-    let yPos = 40;
+    let yPos = 30;
 
     const tableData = [];
     for (const item of this.lista) {
-      tableData.push([item.codigo_qr, item.Persona]);
+      tableData.push([item.codigo_qr, item.Persona.nombres]);
     }
 
     (doc as any).autoTable({
@@ -64,8 +64,8 @@ export class ListabandComponent {
       styles: { fontSize: 9 },
       theme: 'grid',
       columnStyles: {
-        0: { halign: 'left', cellWidth: 25 },
-        1: { halign: 'left', cellWidth: 136 }
+        0: { halign: 'left', cellWidth: 30 },
+        1: { halign: 'left', cellWidth: 150 }
       },
       margin: { top: 1, bottom: 10 },
       pageBreak: 'auto'
