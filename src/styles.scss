@@ -39,9 +39,9 @@
   }
 
   .dark[data-theme='violeta'] {
-    --background: 224 71.4% 4.1%;
+    --background: 20 14.3% 1.1%;
+    --card: 24 10% 4%;
     --foreground: 210 20% 98%;
-    --card: 222 47% 7%;
     --card-foreground: 210 20% 98%;
     --primary: 263.4 70% 50.4%;
     --primary-foreground: 210 20% 98%;
@@ -59,6 +59,8 @@
   .dark[data-theme='rojo'] {
     --primary: 350 100% 40%;
     --primary-foreground: 0 85.7% 97.3%;
+    --background: 20 14.3% 1.1%;
+    --card: 24 10% 4%;
   }
 
   :root[data-theme='azul'] {
@@ -119,6 +121,8 @@
   .dark[data-theme='verde'] {
     --primary: 142.1 70.6% 45.3%;
     --primary-foreground: 144.9 80.4% 10%;
+    --background: 20 14.3% 1.1%;
+    --card: 24 10% 4%;
   }
 
   :root[data-theme='turquesa'] {
@@ -128,6 +132,8 @@
   .dark[data-theme='turquesa'] {
     --primary: 174 72% 56%;
     --primary-foreground: 210 20% 98%;
+    --background: 20 14.3% 1.1%;
+    --card: 24 10% 4%;
   }
 
   [type='text'],
