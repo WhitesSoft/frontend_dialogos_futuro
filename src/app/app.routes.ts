@@ -7,6 +7,7 @@ import { TallerComponent } from './modules/pages/taller/taller.component';
 import { PlanModificarComponent } from './modules/pages/plan-modificar/plan-modificar.component';
 import { ProfileComponent } from './modules/pages/profile/profile.component';
 import { RatingComponent } from './modules/pages/rating/rating.component';
+import { AdminComponent } from './modules/pages/admin/admin.component';
 
 export const routes: Routes = [
   {
@@ -36,5 +37,9 @@ export const routes: Routes = [
   {
     path: "rating",
     component: RatingComponent,
+  },
+  {
+    path: "admin",
+    component: AdminComponent,
   },
 ];
