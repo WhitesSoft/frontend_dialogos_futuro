@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
   public themeColors = [
     {
       name: 'base',
-      code: '#e11d48',
+      code: '#3b82f6',
     },
     {
       name: 'amarillo',
@@ -48,10 +48,6 @@ export class NavbarComponent implements OnInit {
     {
       name: 'verde',
       code: '#22c55e',
-    },
-    {
-      name: 'azul',
-      code: '#3b82f6',
     },
     {
       name: 'naranja',
