@@ -28,7 +28,7 @@ export class ProfileComponent {
     this.activateRoute.params.subscribe(params => {
       const id = params['id']
       console.log(id);
-      this.inscripcionService.getInscrito(Number(id)).subscribe(
+      this.inscripcionService.getInscritoQr(id).subscribe(
         data => {this.inscrito = data
           console.log(this.inscrito)
         },

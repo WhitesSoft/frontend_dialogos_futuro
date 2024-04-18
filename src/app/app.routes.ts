@@ -8,6 +8,7 @@ import { PlanModificarComponent } from './modules/pages/plan-modificar/plan-modi
 import { ProfileComponent } from './modules/pages/profile/profile.component';
 import { RatingComponent } from './modules/pages/rating/rating.component';
 import { AdminComponent } from './modules/pages/admin/admin.component';
+import { ListabandComponent } from './modules/pages/listaband/listaband.component';
 
 export const routes: Routes = [
   {
@@ -41,5 +42,9 @@ export const routes: Routes = [
   {
     path: "admin",
     component: AdminComponent,
+  },
+  {
+    path: "lista-bands",
+    component: ListabandComponent,
   },
 ];
