@@ -10,6 +10,7 @@ import { RatingComponent } from './modules/pages/rating/rating.component';
 import { AdminComponent } from './modules/pages/admin/admin.component';
 import { ListabandComponent } from './modules/pages/listaband/listaband.component';
 import { ExpositoresComponent } from './modules/pages/expositores/expositores.component';
+import { ProfileExpositorComponent } from './modules/pages/profile-expositor/profile-expositor.component';
 
 export const routes: Routes = [
   {
@@ -51,5 +52,9 @@ export const routes: Routes = [
   {
     path: "expositores",
     component: ExpositoresComponent,
+  },
+  {
+    path: "profile-expositor/:id",
+    component: ProfileExpositorComponent,
   },
 ];
