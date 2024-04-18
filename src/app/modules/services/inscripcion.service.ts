@@ -12,7 +12,7 @@ export class InscripcionService {
   constructor(private http: HttpClient) { }
 
 
-  baseUrl:string = 'https://8d3j97mk-3000.brs.devtunnels.ms'
+  baseUrl:string = 'http://192.168.1.194:3000'
 
 
   getInscritos(): Observable<any> {

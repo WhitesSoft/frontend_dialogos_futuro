@@ -2,10 +2,11 @@
   ¿En que startup invertiría?
 </h3>
 <ul class="flex flex-col items-center justify-center gap-y-2">
-  <li>
-    <input type="radio" id="empresa-1" name="hosting" value="empresa-1" class="hidden peer"
-      (change)="onEmpresaSelected('empresa-1')" required />
-    <label for="empresa-1"
+
+  <li *ngFor="let x of startups; let i = index">
+    <input type="checkbox" id="empresa-{{x.id}}" value="true" class="hidden peer"
+    (change)="toggleCheckbox(i)" [disabled]="!x.voted && selectedCount == 2" />
+    <label for="empresa-{{x.id}}"
       class="inline-flex items-center justify-between w-full border-2 rounded-lg cursor-pointer border-muted text-muted-foreground bg-background peer-checked:border-primary">
       <div
         class="flex flex-col items-center rounded-lg shadow bg-background md:flex-row md:max-w-xl hover:bg-background/95">
@@ -14,82 +15,16 @@
           alt="" />
         <div class="flex flex-col justify-between p-4 leading-normal">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Noteworthy technology acquisitions 2021
+            {{x.nombre}}
           </h5>
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
+            {{x.descripcion}}
           </p>
         </div>
       </div>
     </label>
   </li>
-  <li>
-    <input type="radio" id="empresa-2" name="hosting" value="empresa-2" class="hidden peer"
-      (change)="onEmpresaSelected('empresa-2')" required />
-    <label for="empresa-2"
-      class="inline-flex items-center justify-between w-full border-2 rounded-lg cursor-pointer border-muted text-muted-foreground bg-background peer-checked:border-primary">
-      <div
-        class="flex flex-col items-center rounded-lg shadow bg-background md:flex-row md:max-w-xl hover:bg-background/95">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-          src="https://www.adobe.com/es/express/create/logo/media_1b45a0184484ef856334e010afb5765ca6d717915.png?width=750&format=png&optimize=medium"
-          alt="" />
-        <div class="flex flex-col justify-between p-4 leading-normal">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Noteworthy technology acquisitions 2021
-          </h5>
-          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
-          </p>
-        </div>
-      </div>
-    </label>
-  </li>
-  <li>
-    <input type="radio" id="empresa-3" name="hosting" value="empresa-3" class="hidden peer"
-      (change)="onEmpresaSelected('empresa-3')" required />
-    <label for="empresa-3"
-      class="inline-flex items-center justify-between w-full border-2 rounded-lg cursor-pointer border-muted text-muted-foreground bg-background peer-checked:border-primary">
-      <div
-        class="flex flex-col items-center rounded-lg shadow bg-background md:flex-row md:max-w-xl hover:bg-background/95">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-          src="https://www.adobe.com/es/express/create/logo/media_1b45a0184484ef856334e010afb5765ca6d717915.png?width=750&format=png&optimize=medium"
-          alt="" />
-        <div class="flex flex-col justify-between p-4 leading-normal">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Noteworthy technology acquisitions 2021
-          </h5>
-          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
-          </p>
-        </div>
-      </div>
-    </label>
-  </li>
-  <li>
-    <input type="radio" id="empresa-4" name="hosting" value="empresa-4" class="hidden peer"
-      (change)="onEmpresaSelected('empresa-4')" required />
-    <label for="empresa-4"
-      class="inline-flex items-center justify-between w-full border-2 rounded-lg cursor-pointer border-muted text-muted-foreground bg-background peer-checked:border-primary">
-      <div
-        class="flex flex-col items-center rounded-lg shadow bg-background md:flex-row md:max-w-xl hover:bg-background/95">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-          src="https://www.adobe.com/es/express/create/logo/media_1b45a0184484ef856334e010afb5765ca6d717915.png?width=750&format=png&optimize=medium"
-          alt="" />
-        <div class="flex flex-col justify-between p-4 leading-normal">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Noteworthy technology acquisitions 2021
-          </h5>
-          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
-          </p>
-        </div>
-      </div>
-    </label>
-  </li>
+  
 </ul>
 
 <div class="flex items-center justify-center mt-8">
@@ -99,62 +34,3 @@
   </button>
 </div>
 
-
-
-
-<div [ngClass]="{ 'h-64': isExpanded }"
-  class="w-full h-0 mt-3 overflow-hidden transition-all duration-500 ease-in-out bg-card">
-  <div>
-    <h3 class="mb-2 text-2xl font-bold text-start text-foreground">
-      Rating de las empresas
-    </h3>
-    <div class="flex flex-col items-center justify-center gap-8">
-      <div class=" w-full max-w-[50%]">
-        <dl>
-          <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
-            Empresa 1
-          </dt>
-          <dd class="flex items-center mb-3">
-            <div class="w-full bg-gray-200 rounded h-2.5 dark:bg-gray-700 me-2">
-              <div class="bg-blue-600 h-2.5 rounded dark:bg-blue-500" style="width: 88%"></div>
-            </div>
-            <span class="text-sm font-medium text-gray-500 dark:text-gray-400">8.8</span>
-          </dd>
-        </dl>
-        <dl>
-          <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
-            Empresa 2
-          </dt>
-          <dd class="flex items-center mb-3">
-            <div class="w-full bg-gray-200 rounded h-2.5 dark:bg-gray-700 me-2">
-              <div class="bg-blue-600 h-2.5 rounded dark:bg-blue-500" style="width: 89%"></div>
-            </div>
-            <span class="text-sm font-medium text-gray-500 dark:text-gray-400">8.9</span>
-          </dd>
-        </dl>
-        <dl>
-          <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
-            Empresa 3
-          </dt>
-          <dd class="flex items-center mb-3">
-            <div class="w-full bg-gray-200 rounded h-2.5 dark:bg-gray-700 me-2">
-              <div class="bg-blue-600 h-2.5 rounded dark:bg-blue-500" style="width: 88%"></div>
-            </div>
-            <span class="text-sm font-medium text-gray-500 dark:text-gray-400">8.8</span>
-          </dd>
-        </dl>
-        <dl>
-          <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">
-            Empresa 4
-          </dt>
-          <dd class="flex items-center">
-            <div class="w-full bg-gray-200 rounded h-2.5 dark:bg-gray-700 me-2">
-              <div class="bg-blue-600 h-2.5 rounded dark:bg-blue-500" style="width: 54%"></div>
-            </div>
-            <span class="text-sm font-medium text-gray-500 dark:text-gray-400">5.4</span>
-          </dd>
-        </dl>
-      </div>
-    </div>
-  </div>
-</div>
