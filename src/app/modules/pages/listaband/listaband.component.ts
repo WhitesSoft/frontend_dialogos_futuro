@@ -67,6 +67,7 @@ export class ListabandComponent {
               }]
             ]
           },
+          margin: [ 5, 2, 10, 20 ],
           layout: {
             hLineWidth: function (i:any, node:any) {
               return (i === 0 || i === node.table.body.length) ? 2 : 1;
