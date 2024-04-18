@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { BandsPipe } from '../../../core/pipes/bands.pipe';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 @Component({
   selector: 'app-listaband',
@@ -15,30 +17,62 @@ import { BandsPipe } from '../../../core/pipes/bands.pipe';
 })
 export class ListabandComponent {
 
-  lista:lista[] = []
-  filter:string = ''
+  lista: lista[] = []
+  filter: string = ''
 
-  constructor(private inscripcionServ:InscripcionService, private toastrService: ToastrService){
+  constructor(
+    private inscripcionServ: InscripcionService,
+    private toastrService: ToastrService
+  ) { }
 
-  }
 
 
-
-  ngOnInit(){
+  ngOnInit() {
     this.getList();
   }
 
-  getList(){
-    this.inscripcionServ.getIdentificadores().subscribe( response => {
+  getList() {
+    this.inscripcionServ.getIdentificadores().subscribe(response => {
       this.lista = Object.values(response);
     })
   }
 
-  liberarManilla(id:number){
+  liberarManilla(id: number) {
     this.inscripcionServ.liberarManilla(id).subscribe(response => {
       this.toastrService.success('Liberacion exitosa', 'Exito', { timeOut: 3000, progressBar: true });
       this.getList();
     })
+  }
+
+  generarPDF() {
+
+    const doc = new jsPDF();
+    doc.setFontSize(12);
+    doc.text('Lista de bands asignados', 55, 20);
+
+    let yPos = 40;
+
+    const tableData = [];
+    for (const item of this.lista) {
+      tableData.push([item.codigo_qr, item.Persona]);
+    }
+
+    (doc as any).autoTable({
+      startY: yPos,
+      head: [['QR', 'Persona asignada']],
+      body: tableData,
+      styles: { fontSize: 9 },
+      theme: 'grid',
+      columnStyles: {
+        0: { halign: 'left', cellWidth: 25 },
+        1: { halign: 'left', cellWidth: 136 }
+      },
+      margin: { top: 1, bottom: 10 },
+      pageBreak: 'auto'
+    });
+
+    doc.save('lista-bands-asignadas.pdf')
+
   }
 
 }
