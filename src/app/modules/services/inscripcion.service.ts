@@ -40,4 +40,11 @@ export class InscripcionService {
     return this.http.delete(this.baseUrl + `/api/identificadores/persona/${id}`)
   }
 
+  saveUserData(data:any) {
+    sessionStorage.setItem('user', JSON.stringify(data))
+  }
+
+  getUserData(data:any): Observable<any>{
+    return JSON.parse(sessionStorage.getItem('user')!)
+  }
 }
