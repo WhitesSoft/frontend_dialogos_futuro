@@ -13,7 +13,7 @@ export class InscripcionService {
   constructor(private http: HttpClient) { }
 
 
-  baseUrl:string = 'http://192.168.1.194:3000'
+  baseUrl:string = 'https://sceii.dev.404.codes'
 
 
   getInscritos(): Observable<any> {
