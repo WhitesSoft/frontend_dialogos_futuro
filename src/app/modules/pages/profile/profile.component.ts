@@ -32,14 +32,25 @@ export class ProfileComponent {
     this.activateRoute.params.subscribe(params => {
       const id = params['id']
       console.log(id);
+
+      const body: any = {
+        codigo_qr: id
+      }
+
+      this.inscripcionService.obtenerIdentificador(body).subscribe(
+        data => {
+          this.inscripcionService.saveUserToken(data)
+        }
+      )
+
       this.inscripcionService.getInscritoQr(id).subscribe(
-        data => {this.inscrito = data
+        data => {
+          this.inscrito = data
           this.inscripcionService.saveUserData(this.inscrito)
         },
         err => {
-          console.log('no se puede traer uwu', err);
+          console.log('Error obteniendo data', err);
         }
-
       )
     })
 
