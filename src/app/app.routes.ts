@@ -19,6 +19,11 @@ import { ControladorGuard as guard } from './core/guards/controlador.guard';
 
 export const routes: Routes = [
   {
+    path: "",
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  {
     path: "plan-gratuito",
     component: GratuitoComponent,
     canActivate: [guard], data: { requiredRoles: ['sociedad'] }

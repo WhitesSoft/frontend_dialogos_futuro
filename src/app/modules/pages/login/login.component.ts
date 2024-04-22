@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InscripcionService } from '../../services/inscripcion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { InscripcionService } from '../../services/inscripcion.service';
 })
 export class LoginComponent {
 
-  constructor(private inscriptionService: InscripcionService){}
+  constructor(private inscriptionService: InscripcionService, private router:Router){}
 
   loginData = {
     username: '',
@@ -21,7 +22,9 @@ export class LoginComponent {
 
   login(){
     this.inscriptionService.login(this.loginData).subscribe(response => {
-      console.log(response)
+      sessionStorage.setItem('rol', "sociedad")
+      this.inscriptionService.saveUserToken(response)
+      this.router.navigate(['/admin'])
     })
   }
 

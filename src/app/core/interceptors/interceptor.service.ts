@@ -15,7 +15,7 @@ export class InterceptorService {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     let authReq = req;
-    const token = this.inscripcionService.getUserData()
+    const token = this.inscripcionService.getUserToken()
 
     //comprobamos si hay token en session storage
     if (token != null) {

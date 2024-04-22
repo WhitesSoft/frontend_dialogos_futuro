@@ -46,9 +46,12 @@ export class CertificadoComponent {
     }
 
     this.inscripcionService.addInscrito(sendData).subscribe(response => {
-      this.toastrService.success('Inscripcion exitosa', 'Exito', { timeOut: 3000, progressBar: true });
+      this.toastrService.success('Manilla asignada:  '+response.id, 'Exito', { timeOut: 3000, progressBar: true });
       console.log(response)
       this.dataForm.reset()
-    })
+    },err => {
+      this.toastrService.error('Persona ya registrada', 'Error', { timeOut: 3000, progressBar: true });
+    }
+  )
   }
 }
