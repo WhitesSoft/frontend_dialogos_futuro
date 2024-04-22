@@ -11,7 +11,9 @@ import { AdminComponent } from './modules/pages/admin/admin.component';
 import { ListabandComponent } from './modules/pages/listaband/listaband.component';
 import { ExpositoresComponent } from './modules/pages/expositores/expositores.component';
 import { ProfileExpositorComponent } from './modules/pages/profile-expositor/profile-expositor.component';
+import { LoginComponent } from './modules/pages/login/login.component';
 import { controladorGuard } from './core/guards/controlador.guard';
+
 
 export const routes: Routes = [
   {
@@ -66,5 +68,9 @@ export const routes: Routes = [
     path: "profile-expositor/:id",
     component: ProfileExpositorComponent,
     canActivate: [controladorGuard]
+  },
+  {
+    path: "login",
+    component: LoginComponent,
   },
 ];
