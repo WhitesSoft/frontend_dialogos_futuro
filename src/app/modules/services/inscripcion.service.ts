@@ -13,7 +13,7 @@ export class InscripcionService {
   constructor(private http: HttpClient) { }
 
 
-  baseUrl:string = 'https://sceii.dev.404.codes'
+  baseUrl:string = 'http://192.168.1.195:3000'
 
 
   getInscritos(): Observable<any> {
@@ -70,6 +70,10 @@ export class InscripcionService {
 
   getAdmin(){
     return sessionStorage.getItem('rol')
+  }
+
+  login(data:any):Observable<any>{
+    return this.http.post(this.baseUrl+"/api/login", data)
   }
 
 }
