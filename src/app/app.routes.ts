@@ -12,6 +12,7 @@ import { ListabandComponent } from './modules/pages/listaband/listaband.componen
 import { ExpositoresComponent } from './modules/pages/expositores/expositores.component';
 import { ProfileExpositorComponent } from './modules/pages/profile-expositor/profile-expositor.component';
 import { LoginComponent } from './modules/pages/login/login.component';
+import { AboutComponent } from './modules/pages/about/about.component';
 import { ControladorGuard as guard } from './core/guards/controlador.guard';
 
 
@@ -74,5 +75,9 @@ export const routes: Routes = [
   {
     path: "login",
     component: LoginComponent,
+  },
+  {
+    path: "about",
+    component: AboutComponent,
   },
 ];
