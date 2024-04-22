@@ -10,11 +10,15 @@ import { Expositor } from '../../core/models/expositor.models';
 })
 export class InscripcionService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
+  baseUrl: string = 'http://192.168.1.195:3000'
 
-  baseUrl:string = 'http://192.168.1.195:3000'
-
+  obtenerIdentificador(qr: any): Observable<any> {
+    return this.http.post(this.baseUrl + "/api/login/identificador", qr)
+  }
 
   getInscritos(): Observable<any> {
     return this.http.get(this.baseUrl + '/api/personas')
@@ -29,7 +33,11 @@ export class InscripcionService {
   }
 
   getInscritoQr(qr: string): Observable<Inscrito> {
-    return this.http.get<Inscrito>(this.baseUrl + `/api/personas/qr/${qr}`)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+    });
+    return this.http.get<Inscrito>(this.baseUrl + `/api/personas/qr/${qr}`, { headers: headers })
   }
 
   getInscrito(id: number): Observable<Inscrito> {
@@ -48,32 +56,32 @@ export class InscripcionService {
     return this.http.get<Expositor>(this.baseUrl + `/api/autores/${id}`)
   }
 
-  saveUserData(data:any) {
+  saveUserData(data: any) {
     sessionStorage.setItem('user', JSON.stringify(data))
   }
 
-  getUserData(): Observable<any>{
+  getUserData(): Observable<any> {
     return JSON.parse(sessionStorage.getItem('user')!)
   }
 
-  saveUserToken(token: string){
+  saveUserToken(token: string) {
     sessionStorage.setItem('token', token)
   }
 
-  getUserToken(){
+  getUserToken() {
     return sessionStorage.getItem('token')
   }
 
-  saveAdmin(rol: string){
+  saveAdmin(rol: string) {
     sessionStorage.setItem('rol', rol)
   }
 
-  getAdmin(){
+  getAdmin() {
     return sessionStorage.getItem('rol')
   }
 
-  login(data:any):Observable<any>{
-    return this.http.post(this.baseUrl+"/api/login", data)
+  login(data: any): Observable<any> {
+    return this.http.post(this.baseUrl + "/api/login", data)
   }
 
 }
