@@ -64,12 +64,12 @@ export class InscripcionService {
     return sessionStorage.getItem('token')
   }
 
-  saveAdmin(admin: string){
-    sessionStorage.setItem('admin', admin)
+  saveAdmin(rol: string){
+    sessionStorage.setItem('rol', rol)
   }
 
   getAdmin(){
-    return sessionStorage.getItem('admin')
+    return sessionStorage.getItem('rol')
   }
 
 }
