@@ -1,21 +1,47 @@
-import { Inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 
-export const controladorGuard: CanActivateFn = (route, state) => {
+@Injectable({
+  providedIn: 'root',
+})
 
-  //let admin = ''
-  const router = Inject(Router)
+export class ControladorGuard implements CanActivate {
 
-  const token = sessionStorage.getItem('token')
-  const admin = sessionStorage.getItem('admin')
+  admin = ''
+  user = ''
 
+  constructor(
+    private router: Router
+  ) { }
 
-  if (token !== null || admin === 'sociedad') {
-    return true;
-  } else {
-    router.navigateByUrl('/profile')
-    return false
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+
+    const requiredRoles = next.data['requiredRoles'] as string[];
+    const token = sessionStorage.getItem('token')
+
+    if (sessionStorage.getItem('rol') === 'sociedad') {
+      this.admin = 'sociedad'
+    } else {
+      this.user = 'user'
+    }
+
+    if (!token) {
+      if (requiredRoles && requiredRoles.includes('sociedad')) {
+        this.router.navigate(['/login']);
+      } else {
+        this.router.navigate(['/profile/404']);
+      }
+      return false;
+    }
+    return true
   }
 
+}
 
-};
+
+
