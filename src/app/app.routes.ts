@@ -13,6 +13,7 @@ import { ExpositoresComponent } from './modules/pages/expositores/expositores.co
 import { ProfileExpositorComponent } from './modules/pages/profile-expositor/profile-expositor.component';
 import { LoginComponent } from './modules/pages/login/login.component';
 import { controladorGuard } from './core/guards/controlador.guard';
+import { AboutComponent } from './modules/pages/about/about.component';
 
 
 export const routes: Routes = [
@@ -72,5 +73,9 @@ export const routes: Routes = [
   {
     path: "login",
     component: LoginComponent,
+  },
+  {
+    path: "about",
+    component: AboutComponent,
   },
 ];
