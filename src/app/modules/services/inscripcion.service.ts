@@ -52,7 +52,24 @@ export class InscripcionService {
     sessionStorage.setItem('user', JSON.stringify(data))
   }
 
-  getUserData(data:any): Observable<any>{
+  getUserData(): Observable<any>{
     return JSON.parse(sessionStorage.getItem('user')!)
   }
+
+  saveUserToken(token: string){
+    sessionStorage.setItem('token', token)
+  }
+
+  getUserToken(){
+    return sessionStorage.getItem('token')
+  }
+
+  saveAdmin(admin: string){
+    sessionStorage.setItem('admin', admin)
+  }
+
+  getAdmin(){
+    return sessionStorage.getItem('admin')
+  }
+
 }
