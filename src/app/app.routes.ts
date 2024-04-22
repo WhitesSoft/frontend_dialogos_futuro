@@ -12,27 +12,34 @@ import { ListabandComponent } from './modules/pages/listaband/listaband.componen
 import { ExpositoresComponent } from './modules/pages/expositores/expositores.component';
 import { ProfileExpositorComponent } from './modules/pages/profile-expositor/profile-expositor.component';
 import { LoginComponent } from './modules/pages/login/login.component';
+import { controladorGuard } from './core/guards/controlador.guard';
+
 
 export const routes: Routes = [
   {
     path: "plan-gratuito",
     component: GratuitoComponent,
+    canActivate: [controladorGuard], data: { requiredRoles: ['sociedad'] }
   },
   {
     path: "plan-certificado",
     component: CertificadoComponent,
+    canActivate: [controladorGuard], data: { requiredRoles: ['sociedad'] }
   },
   {
     path: "plan-taller",
     component: TallerComponent,
+    canActivate: [controladorGuard], data: { requiredRoles: ['sociedad'] }
   },
   {
     path: "lista",
     component: ListaComponent,
+    canActivate: [controladorGuard], data: { requiredRoles: ['sociedad'] }
   },
   {
     path: "modificar-inscripcion/:id",
     component: PlanModificarComponent,
+    canActivate: [controladorGuard], data: { requiredRoles: ['sociedad'] }
   },
   {
     path: "profile/:id",
@@ -41,6 +48,7 @@ export const routes: Routes = [
   {
     path: "rating",
     component: RatingComponent,
+    canActivate: [controladorGuard]
   },
   {
     path: "admin",
@@ -49,14 +57,17 @@ export const routes: Routes = [
   {
     path: "lista-bands",
     component: ListabandComponent,
+    canActivate: [controladorGuard], data: { requiredRoles: ['sociedad'] }
   },
   {
     path: "expositores",
     component: ExpositoresComponent,
+    canActivate: [controladorGuard]
   },
   {
     path: "profile-expositor/:id",
     component: ProfileExpositorComponent,
+    canActivate: [controladorGuard]
   },
   {
     path: "login",
