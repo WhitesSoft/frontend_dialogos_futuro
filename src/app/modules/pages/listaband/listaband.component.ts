@@ -20,6 +20,7 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 export class ListabandComponent {
 
   lista: lista[] = []
+  listaVacia: lista[] = []
   filter: string = ''
 
   constructor(
@@ -36,6 +37,10 @@ export class ListabandComponent {
   getList() {
     this.inscripcionServ.getIdentificadores().subscribe(response => {
       this.lista = Object.values(response);
+    })
+
+    this.inscripcionServ.getIdentificadoresVacies().subscribe(response => {
+      this.listaVacia = Object.values(response);
     })
   }
 
@@ -66,6 +71,63 @@ export class ListabandComponent {
                 width: 70,
                 height: 50,
               }, '\n Nro.'+x.id, '\n'+x.Persona.nombres, {
+                image: this.uajms,
+                width: 50,
+                height: 50,
+              }]
+            ],
+            dontBreakRows: true,
+          },
+          margin: [ 0, 0, 0, 0 ],
+          layout: {
+            hLineWidth: function (i:any, node:any) {
+              return (i === 0 || i === node.table.body.length) ? 2 : 1;
+            },
+            vLineWidth: function (i:any, node:any) {
+              return (i === 0 || i === node.table.widths.length) ? 2 : 1;
+            },
+            hLineColor: function (i:any, node:any) {
+              return (i === 0 || i === node.table.body.length) ? 'black' : 'white';
+            },
+            vLineColor: function (i:any, node:any) {
+              return (i === 0 || i === node.table.widths.length) ? 'black' : 'white';
+            },
+          },
+        }
+      )
+      listaPDF.push({
+        text: '',
+        style: 'header'
+      },)
+    }
+    
+    const pdfDefinition: any = {
+      pageSize: {
+        width: 612.36,
+        height: 935.55
+      },
+      content: listaPDF
+    }
+    
+
+    const pdf = pdfMake.createPdf(pdfDefinition, pdfMake.tableLayouts , pdfMake.fonts ,pdfFonts.pdfMake.vfs);
+    pdf.open();
+  }
+
+  generarPDFSinAsignar() {
+    let listaPDF:any[] = []
+
+    for(let x of this.listaVacia){
+      listaPDF.push(
+        {
+          table: {
+            widths: [70, 50, 140, 70],
+            body: [
+              [{
+                image: this.imagenTarijaDialoga,
+                width: 70,
+                height: 50,
+              }, '\n Nro.'+x.id, " ", {
                 image: this.uajms,
                 width: 50,
                 height: 50,
@@ -145,6 +207,8 @@ export class ListabandComponent {
     const pdf = pdfMake.createPdf(pdfDefinition, pdfMake.tableLayouts , pdfMake.fonts ,pdfFonts.pdfMake.vfs);
     pdf.open();
   }
+
+
 
 
   style = {

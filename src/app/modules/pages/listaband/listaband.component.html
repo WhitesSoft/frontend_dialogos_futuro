@@ -1,4 +1,4 @@
-<div class="flex flex-col mt-8 w-[80%] m-auto overflow-hidden">
+<div class="flex flex-col mt-8 w-[100%] max-w-[90%] m-auto overflow-hidden">
   <div class="-mx-4 -my-2 overflow-x-hidden sm:-mx-6 lg:-mx-8">
     <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
       <div class="flex justify-between">
@@ -16,8 +16,13 @@
 
           <button
           (click)="generarPDF()"
-          class="w-full px-4 py-2 text-white rounded-md bg-primary hover:bg-primary/90">
+          class="w-full mx-4 px-4 py-2 text-white rounded-md bg-primary hover:bg-primary/90">
             Generar pdf
+          </button>
+          <button
+          (click)="generarPDFSinAsignar()"
+          class="w-full px-4 py-2 text-white rounded-md bg-primary hover:bg-primary/90">
+            Manillas Vacias
           </button>
         </div>
 
@@ -26,7 +31,7 @@
       </div>
 
       <div class="overflow-hidden w-full max-w-full  border rounded-md border-primary">
-        <table class="min-w-full max-w-full table-fixed">
+        <table class="min-w-full max-w-full table-auto">
           <thead class="bg-primary/30">
             <tr>
               <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
@@ -38,7 +43,7 @@
               <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
                 <span>PERSONA ASIGNADA</span>
               </th>
-              <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
+              <th scope="col" class="w-24 px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
                 <span>ORGANIZACION</span>
               </th>
               <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
