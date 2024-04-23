@@ -40,7 +40,7 @@ export class ProfileComponent {
 
       this.inscripcionService.obtenerIdentificador(body).subscribe(
         data => {
-          sessionStorage.setItem('qr', body.qr)
+          sessionStorage.setItem('qr', id)
           this.inscripcionService.saveUserToken(data)
 
           this.inscripcionService.getInscritoQr(id).subscribe(
