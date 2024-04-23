@@ -20,6 +20,13 @@ export class AppComponent implements OnInit{
     
   }
 
+  
+  isModalVisible: boolean = false;
+
+  toggleModal() {
+    this.isModalVisible = !this.isModalVisible;
+  }
+
   openTab = 1;
 
   ngOnInit(): void {

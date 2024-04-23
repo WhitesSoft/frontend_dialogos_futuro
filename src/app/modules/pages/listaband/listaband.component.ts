@@ -40,8 +40,10 @@ export class ListabandComponent {
 
   liberarManilla(id: number) {
     this.inscripcionServ.liberarManilla(id).subscribe(response => {
-      this.toastrService.success('Liberacion exitosa', 'Exito', { timeOut: 3000, progressBar: true });
       this.getList();
+      this.toastrService.success('Liberacion exitosa', 'Exito', { timeOut: 3000, progressBar: true });
+    }, err => {
+      this.toastrService.error('Error en la liberacion', 'Error', { timeOut: 3000, progressBar: true });
     })
   }
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { InscripcionService } from '../../services/inscripcion.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Inscrito } from '../../../core/models/inscrito.models';
 import { CommonModule } from '@angular/common';
 import { NombrePipe } from '../../../core/pipes/nombre.pipe';
@@ -21,11 +21,12 @@ export class ProfileComponent {
 
   constructor(
     private inscripcionService: InscripcionService,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private router:Router
   ) { }
 
-  ngOnInit() {
-    this.getInscrito()
+  async ngOnInit() {
+    await this.getInscrito()
   }
   getInscrito() {
 
@@ -39,21 +40,22 @@ export class ProfileComponent {
 
       this.inscripcionService.obtenerIdentificador(body).subscribe(
         data => {
+          sessionStorage.setItem('qr', body.qr)
           this.inscripcionService.saveUserToken(data)
-        }
-      )
-
-      this.inscripcionService.getInscritoQr(id).subscribe(
-        data => {
-          this.inscrito = data
-          this.inscripcionService.saveUserData(this.inscrito)
-        },
-        err => {
-          console.log('Error obteniendo data', err);
+          this.inscripcionService.getInscritoQr(id).subscribe(
+            data => {
+              this.inscrito = data
+              this.inscripcionService.saveUserData(this.inscrito)
+            },
+            err => {
+              console.log('Error obteniendo data', err);
+            }
+          )
+        }, err => {
+          this.router.navigate(['/error'])
         }
       )
     })
-
   }
 
 
