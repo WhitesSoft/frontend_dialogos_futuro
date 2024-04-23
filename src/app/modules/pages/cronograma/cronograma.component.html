@@ -1,0 +1,146 @@
+<!-- component -->
+<div class="h-[80vh] max-w-xl mx-auto p-8">   
+    <h4 class="text-foreground text-center mt-4 text-3xl font-bold">MIERCOLES, 24 DE ABRIL</h4>
+    <h4 class="text-foreground text-center mb-8 text-xl font-semibold">TEATRO DE LA CULTURA</h4>
+    <ul>
+        <li *ngFor="let x of programa24">
+          <div class="relative pb-8">
+            <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+            <div class="relative flex items-start space-x-3">
+              <div>
+                <div class="relative px-1">
+                  <div *ngIf="!esFechaPasada(x.fecha)" class="h-8 w-8 bg-blue-500 rounded-full flex items-center justify-center">
+                      <i class="text-white bi bi-plus-lg"></i>
+                  </div>
+                  <div *ngIf="esFechaPasada(x.fecha)" class="h-8 w-8 bg-green-500 rounded-full flex items-center justify-center">
+                      <i class="text-white bi bi-check"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="min-w-0 flex-1 py-0">
+                <div class="text-md text-foreground/60">
+                  <div>
+                    <a class="font-bold text-foreground mr-2">{{x.titulo}}</a>
+
+                  
+                  </div>
+                  <span class="whitespace-nowrap text-sm">Hora: {{x.hora}}</span>
+                </div>
+                <div class="mt-2 text-foreground/80">
+                  <p>
+                      {{x.expositor}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>  
+      </ul>
+      <h4 class="text-foreground text-center mt-4 text-3xl font-bold">JUEVES, 25 DE ABRIL</h4>
+    <h4 class="text-foreground text-center mb-8 text-xl font-semibold">TEATRO DE LA CULTURA</h4>
+<ul>
+          <li *ngFor="let x of programa25">
+            <div class="relative pb-8">
+              <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+              <div class="relative flex items-start space-x-3">
+                <div>
+                  <div class="relative px-1">
+                    <div *ngIf="!esFechaPasada(x.fecha)" class="h-8 w-8 bg-blue-500 rounded-full flex items-center justify-center">
+                        <i class="text-white bi bi-plus-lg"></i>
+                    </div>
+                    <div *ngIf="esFechaPasada(x.fecha)" class="h-8 w-8 bg-green-500 rounded-full flex items-center justify-center">
+                        <i class="text-white bi bi-check"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="min-w-0 flex-1 py-0">
+                  <div class="text-md text-foreground/60">
+                    <div>
+                      <a class="font-bold text-foreground mr-2">{{x.titulo}}</a>
+  
+                    
+                    </div>
+                    <span class="whitespace-nowrap text-sm">Hora: {{x.hora}}</span>
+                  </div>
+                  <div class="mt-2 text-foreground/80">
+                    <p>
+                        {{x.expositor}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>  
+        </ul>
+        <ul>
+          <li *ngFor="let x of programa25">
+            <div class="relative pb-8">
+              <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+              <div class="relative flex items-start space-x-3">
+                <div>
+                  <div class="relative px-1">
+                    <div *ngIf="!esFechaPasada(x.fecha)" class="h-8 w-8 bg-blue-500 rounded-full flex items-center justify-center">
+                        <i class="text-white bi bi-plus-lg"></i>
+                    </div>
+                    <div *ngIf="esFechaPasada(x.fecha)" class="h-8 w-8 bg-green-500 rounded-full flex items-center justify-center">
+                        <i class="text-white bi bi-check"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="min-w-0 flex-1 py-0">
+                  <div class="text-md text-foreground/60">
+                    <div>
+                      <a class="font-bold text-foreground mr-2">{{x.titulo}}</a>
+  
+                    
+                    </div>
+                    <span class="whitespace-nowrap text-sm">Hora: {{x.hora}}</span>
+                  </div>
+                  <div class="mt-2 text-foreground/80">
+                    <p>
+                        {{x.expositor}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>  
+        </ul>
+
+        <h4 class="text-foreground text-center mt-4 text-3xl font-bold">VIERNES, 25 DE ABRIL</h4>
+    <h4 class="text-foreground text-center mb-8 text-xl font-semibold">UNIVERSIDAD CATOLICA BOLIVIANA</h4>
+    <ul>
+        <li>
+          <div class="relative pb-8">
+            <span class="absolute top-5 left-5 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+            <div class="relative flex items-start space-x-3">
+              <div>
+                <div class="relative px-1">
+                  <div *ngIf="!esFechaPasada(programa26.fecha)" class="h-8 w-8 bg-blue-500 rounded-full flex items-center justify-center">
+                      <i class="text-white bi bi-plus-lg"></i>
+                  </div>
+                  <div *ngIf="esFechaPasada(programa26.fecha)" class="h-8 w-8 bg-green-500 rounded-full flex items-center justify-center">
+                      <i class="text-white bi bi-check"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="min-w-0 flex-1 py-0">
+                <div class="text-md text-foreground/60">
+                  <div>
+                    <a class="font-bold text-foreground mr-2">{{programa26.titulo}}</a>
+
+                  
+                  </div>
+                  <span class="whitespace-nowrap text-sm">Hora: {{programa26.hora}}</span>
+                </div>
+                <div class="mt-2 text-foreground/80">
+                  <p>
+                      {{programa26.expositor}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>  
+      </ul>
+    </div>

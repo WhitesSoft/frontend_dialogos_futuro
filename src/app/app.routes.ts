@@ -15,6 +15,7 @@ import { LoginComponent } from './modules/pages/login/login.component';
 import { AboutComponent } from './modules/pages/about/about.component';
 import { ControladorGuard as guard } from './core/guards/controlador.guard';
 import { ErrorComponent } from './modules/pages/error/error.component';
+import { CronogramaComponent } from './modules/pages/cronograma/cronograma.component';
 
 
 
@@ -89,5 +90,9 @@ export const routes: Routes = [
   {
     path: "error",
     component: ErrorComponent,
+  },
+  {
+    path: "cronograma",
+    component: CronogramaComponent,
   },
 ];
