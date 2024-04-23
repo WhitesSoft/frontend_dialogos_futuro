@@ -4,17 +4,17 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-cronograma',
   standalone: true,
-  imports: [ CommonModule],
+  imports: [CommonModule],
   templateUrl: './cronograma.component.html',
   styleUrl: './cronograma.component.scss'
 })
 export class CronogramaComponent {
 
-  programa24:any = [
+  programa24: any = [
     { titulo: "PANEL DE SABIDURÍAS ANCESTRALES E INDÍGENAS EN EL MUNDO DE LA INTELIGENCIA ARTIFICIAL.", hora: "17:00", fecha: "2024-04-24T17:00:00-04:00" },
-  { titulo: "INAUGURACION. Puesta en escena artística “MarIA ya está aquí, entre la inteligencia ancestral y la inteligencia artificial”. Inauguración.", hora: "19:00", fecha: "2024-04-24T19:00:00-04:00" }
+    { titulo: "INAUGURACION. Puesta en escena artística “MarIA ya está aquí, entre la inteligencia ancestral y la inteligencia artificial”. Inauguración.", hora: "19:00", fecha: "2024-04-24T19:00:00-04:00" }
   ]
-  programa25:any = [
+  programa25: any = [
     { titulo: "LA MUSICA NOS UNE. Video clip enganchado de canciones del mundo (mientras se acomoda el público)", hora: "8:30", fecha: "2024-04-25T08:30:00-04:00", horaTimeStamp: 1816700000000 },
     { titulo: "DINAMICA DE ARRANQUE", hora: "8:45", fecha: "2024-04-25T08:45:00-04:00", horaTimeStamp: 1816701500000 },
     { titulo: "Diálogo de cosmovisiones, interculturalidad y tecnología. Sabidurías ancestrales e indígenas en el mundo de la inteligencia artificial.", expositor: "MARCIA MANDEPORA (BOLIVIA)", hora: "9:00", fecha: "2024-04-25T09:00:00-04:00", horaTimeStamp: 1816703000000 },
@@ -41,7 +41,8 @@ export class CronogramaComponent {
     { titulo: "REPORTE RÁPIDO DE CONCLUSIONES", hora: "17:35", fecha: "2024-04-25T17:35:00-04:00", horaTimeStamp: 1816779300000 },
     { titulo: "CIERRE", hora: "17:50", fecha: "2024-04-25T17:50:00-04:00", horaTimeStamp: 1816780000000 }
   ];
-  programa26:any = { titulo: "TALLER ESPECIALIZADO EN IA Y NEGOCIOS", expositor: "João da Silveira (Portugal) y Hugo Córdova (Bolivia)", descripcion: "¿Cómo transformar tu empresa con IA?", hora: "17:00", fecha: "2024-04-26T17:00:00-04:00" }
+
+  programa26: any = { titulo: "TALLER ESPECIALIZADO EN IA Y NEGOCIOS", expositor: "João da Silveira (Portugal) y Hugo Córdova (Bolivia)", descripcion: "¿Cómo transformar tu empresa con IA?", hora: "17:00", fecha: "2024-04-26T17:00:00-04:00" }
 
 
   esFechaPasada(fecha: string): boolean {

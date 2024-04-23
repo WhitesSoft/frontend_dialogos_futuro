@@ -65,6 +65,13 @@ export class InscripcionService {
     return this.http.post<any>(this.baseUrl + `/api/startups/persona/${id}`, startups)
   }
 
+  sendSugerencia(id: number, sugerencia: any){
+    const suger = {
+      sugerencia: sugerencia
+    }
+    return this.http.post<any>(this.baseUrl + `/api/sugerencias/persona/${id}`, suger)
+  }
+
   saveUserData(data: any) {
     sessionStorage.setItem('user', JSON.stringify(data))
   }

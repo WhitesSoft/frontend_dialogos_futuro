@@ -31,10 +31,6 @@ export class ProfileExpositorComponent {
       this.inscripcionService.getExpositor(id).subscribe(
         data => {
           this.expositor = data
-          console.log(this.expositor)
-        },
-        err => {
-          console.log('no se puede traer uwu', err);
         }
       )
     })

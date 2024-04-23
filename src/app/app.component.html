@@ -10,18 +10,21 @@
 
       <!-- Botón flotante -->
       <button (click)="toggleModal()" id="floating-btn"
-        class="bg-primary hover:bg-primary/80 text-white font-bold py-2 px-4 rounded-md shadow-md fixed bottom-8 right-8 z-10">
-        Sugerencia
+        class="fixed z-10 px-4 py-2 font-bold text-white rounded-md shadow-md bg-primary hover:bg-primary/80 bottom-24 right-4">
+        TU OPINION
       </button>
 
       <!-- Modal -->
       <div id="modal" [ngClass]="[isModalVisible ? '' : 'hidden']"
-        class=" bg-background flex flex-col p-4 rounded-md shadow-md absolute bottom-20 right-8 z-20">
-        <h2 class="text-lg text-foreground font-bold mb-2">Déjanos tu aporte y opinión</h2>
+        class="absolute z-20 flex flex-col p-4 rounded-md shadow-md bg-background bottom-36 right-4">
+        <h2 class="mb-2 text-lg font-bold text-foreground">Déjanos tu aporte y opinión</h2>
         <textarea
-          class="w-64 h-32 bg-card resize-none text-foreground rounded-md p-2 focus:outline-none  focus:ring-primary/50 " ></textarea>
 
-        <button class="bg-primary hover:bg-primary/80 mt-4 text-white font-bold py-2 px-4 rounded-md shadow-md" >Enviar</button>
+        [(ngModel)]="textoArea"
+          class="w-64 h-32 p-2 rounded-md resize-none bg-card text-foreground focus:outline-none focus:ring-primary/50"></textarea>
+
+        <button (click)="enviarSugerencia()"
+          class="px-4 py-2 mt-4 font-bold text-white rounded-md shadow-md bg-primary hover:bg-primary/80">Enviar</button>
       </div>
 
       <router-outlet></router-outlet>
@@ -33,7 +36,7 @@
 
   <footer
     class="sticky top-[100vh] bottom-0 left-0 w-full flex-col items-center max-w-[100%] text-center bg-background text-surface  text-foreground">
-    <div class="m-auto container pt-4">
+    <div class="container pt-4 m-auto">
       <div class="max-w-full">
         <div class="m-auto max-w-[20%] flex items-center justify-center gap-x-3">
 
@@ -70,7 +73,7 @@
     </div>
 
     <!--Copyright section-->
-    <div class="w-full pb-2 text-sm text-center bg-background text-blue-400" style="font-weight: 500;">
+    <div class="w-full pb-2 text-sm text-center text-blue-400 bg-background" style="font-weight: 500;">
       © 2024 Copyright:
       <a href="https://www.facebook.com/share/5T3PUUG4sDZ4676W/?mibextid=qi2Omg">Tarija Dialoga</a>,
       <a href="/about">SCEII</a>

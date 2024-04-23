@@ -34,9 +34,7 @@ export class ExpositoresComponent {
   }
 
   selected(expositor?: number) {
-    //this.selectedEmpresa = empresa;
     this.router.navigate([`profile-expositor/${expositor}`])
-    console.log('Empresa seleccionada:', expositor);
   }
 
 

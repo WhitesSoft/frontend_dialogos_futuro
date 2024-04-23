@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from "@angular/forms";
-
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { InscripcionService } from '../../services/inscripcion.service';

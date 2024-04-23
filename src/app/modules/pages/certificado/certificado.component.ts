@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { InscripcionService } from '../../services/inscripcion.service';
-
 
 @Component({
   selector: 'app-certificado',
@@ -33,7 +31,6 @@ export class CertificadoComponent {
     })
   }
 
-
   save() {
     let sendData = {
       nombres: this.dataForm.get('nombre')?.value,
@@ -46,12 +43,12 @@ export class CertificadoComponent {
     }
 
     this.inscripcionService.addInscrito(sendData).subscribe(response => {
-      this.toastrService.success('Manilla asignada:  '+response.id, 'Exito', { timeOut: 3000, progressBar: true });
+      this.toastrService.success('Manilla asignada:  ' + response.id, 'Exito', { timeOut: 3000, progressBar: true });
       console.log(response)
       this.dataForm.reset()
-    },err => {
+    }, err => {
       this.toastrService.error('Persona ya registrada', 'Error', { timeOut: 3000, progressBar: true });
     }
-  )
+    )
   }
 }
