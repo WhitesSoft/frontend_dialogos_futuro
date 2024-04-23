@@ -4,6 +4,7 @@ import { lista } from '../../../core/models/lista.models';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
+import { Alignment, Margins } from 'pdfmake/interfaces';
 import { BandsPipe } from '../../../core/pipes/bands.pipe';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -69,7 +70,7 @@ export class ListabandComponent {
               }]
             ]
           },
-          margin: [ 5, 2, 10, 20 ],
+          margin: [ 0, 0, 0, 0 ],
           layout: {
             hLineWidth: function (i:any, node:any) {
               return (i === 0 || i === node.table.body.length) ? 2 : 1;
@@ -87,7 +88,7 @@ export class ListabandComponent {
         }
       )
       listaPDF.push({
-        text: '\n\n',
+        text: '',
         style: 'header'
       },)
     }
@@ -101,6 +102,66 @@ export class ListabandComponent {
 
     const pdf = pdfMake.createPdf(pdfDefinition, pdfMake.tableLayouts , pdfMake.fonts ,pdfFonts.pdfMake.vfs);
     pdf.open();
+  }
+
+
+  generarPDFReporte(){
+    let listaPDF:any[] = []
+    listaPDF.push([{text: 'ID BAND', style: 'tableHeader'}, {text: 'NOMBRE', style: 'tableHeader'}, {text: 'ORGANIZACION', style: 'tableHeader'}, {text: 'FIRMA', style: 'tableHeader'}])
+    for(let x of this.lista){
+
+      listaPDF.push([
+        x.id, x.Persona.nombres, x.Persona.organizacion, ""
+      ])
+    }
+
+    const pdfDefinition: any = {
+      content: [
+        { image: this.imagenTarijaDialoga, width: 84, height: 60 },
+        {
+          stack: [
+            'REGISTRO DE MANILLAS',
+          ],
+          style: 'header'
+        },
+        {
+        
+        table: {
+          heights: 30,
+          widths: [50, 150, 150, 120],
+          headerRows: 1,
+				  body: listaPDF,
+          dontBreakRows: true, 
+        },
+        layout: 'lightHorizontalLines'
+      }], styles: this.style
+    }
+
+    const pdf = pdfMake.createPdf(pdfDefinition, pdfMake.tableLayouts , pdfMake.fonts ,pdfFonts.pdfMake.vfs);
+    pdf.open();
+  }
+
+
+  style = {
+    header: {
+      fontSize: 18,
+      bold: true,
+      alignment: 'center' as Alignment,
+      margin: [0, 30, 0, 30] as Margins
+    },
+    tableExample: {
+      margin: [0, 5, 0, 15] as Margins
+    },
+    tableHeader: {
+      bold: true,
+      fontSize: 13,
+      color: 'black'
+    },
+    monto: {
+      bold: true,
+      fontSize: 13,
+      alignment: 'right' as Alignment,
+    }
   }
 
 }
