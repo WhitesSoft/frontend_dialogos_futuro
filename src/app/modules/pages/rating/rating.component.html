@@ -1,26 +1,23 @@
 <h3 class="mt-4 mb-8 text-2xl font-bold text-center text-foreground">
   ¿En que startup invertiría?
 </h3>
-<ul class="flex flex-col items-center justify-center gap-y-2">
+<ul class="flex flex-col items-center justify-center gap-y-2 ">
 
-  <li *ngFor="let x of startups; let i = index">
-    <input type="checkbox" id="empresa-{{x.id}}" value="true" class="hidden peer"
-    (change)="toggleCheckbox(i)" [disabled]="!x.voted && selectedCount == 2" />
+  <li class="w-full sm:max-w-full md:max-w-[40%]" *ngFor="let x of startups; let i = index">
+    <input type="checkbox" id="empresa-{{x.id}}" value="true" class="hidden peer" (change)="toggleCheckbox(i)"
+      [disabled]="!x.voted && selectedCount == 2" />
     <label for="empresa-{{x.id}}"
-      class="inline-flex items-center justify-between w-full border-2 rounded-lg cursor-pointer border-muted text-muted-foreground bg-background peer-checked:border-primary">
-      <div
-        class="flex flex-col items-center rounded-lg shadow bg-background md:flex-row md:max-w-xl hover:bg-background/95">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-          src="https://www.adobe.com/es/express/create/logo/media_1b45a0184484ef856334e010afb5765ca6d717915.png?width=750&format=png&optimize=medium"
-          alt="" />
-        <div class="flex flex-col justify-between p-4 leading-normal">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {{x.nombre}}
-          </h5>
-          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            {{x.descripcion}}
-          </p>
-        </div>
+      class="flex flex-col items-center mt-5 border rounded-lg shadow border-primary/20 bg-background md:w-full md:flex-row md:max-w-full hover:bg-background/80 peer-checked:border-primary">
+      <img class="object-cover w-full rounded-t-lg h-52 md:max-h-[10%] md:w-48 md:rounded-none md:rounded-s-lg"
+        src="{{ x.foto }}" alt="" />
+      <div class="flex flex-col justify-between p-4 leading-normal">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-foreground">
+          {{ x.nombre }}
+        </h5>
+        <h3 class="mb-2 overflow-hidden text-sm font-bold tracking-tight text-justify text-muted-foreground">
+          {{ x.descripcion }}
+        </h3>
+
       </div>
     </label>
   </li>
@@ -28,9 +25,9 @@
 </ul>
 
 <div class="flex items-center justify-center mt-8">
-  <button [disabled]="!selectedEmpresa" class="px-4 py-2 font-bold rounded bg-primary hover:bg-primary/80 text-white w-full max-w-[40%]"
+  <button [disabled]="!selectedEmpresa"
+    class="px-4 py-2 font-bold rounded bg-primary hover:bg-primary/80 text-white w-full max-w-[40%]"
     (click)="toggleSlide()">
     Finalizar encuesta
   </button>
 </div>
-

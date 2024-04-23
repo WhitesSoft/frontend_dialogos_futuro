@@ -24,10 +24,10 @@ export class ProfileComponent {
     private activateRoute: ActivatedRoute
   ) { }
 
-  ngOnInit() {
-    this.getInscrito()
+  async ngOnInit() {
+    await this.getInscrito()
   }
-  getInscrito() {
+  async getInscrito() {
 
     this.activateRoute.params.subscribe(params => {
       const id = params['id']
@@ -46,6 +46,7 @@ export class ProfileComponent {
       this.inscripcionService.getInscritoQr(id).subscribe(
         data => {
           this.inscrito = data
+          this.inscripcionService.saveAdmin('user')
           this.inscripcionService.saveUserData(this.inscrito)
         },
         err => {
