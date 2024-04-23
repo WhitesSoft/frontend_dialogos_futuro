@@ -14,6 +14,7 @@ import { ProfileExpositorComponent } from './modules/pages/profile-expositor/pro
 import { LoginComponent } from './modules/pages/login/login.component';
 import { AboutComponent } from './modules/pages/about/about.component';
 import { ControladorGuard as guard } from './core/guards/controlador.guard';
+import { ErrorComponent } from './modules/pages/error/error.component';
 
 
 
@@ -84,5 +85,9 @@ export const routes: Routes = [
   {
     path: "about",
     component: AboutComponent,
+  },
+  {
+    path: "error",
+    component: ErrorComponent,
   },
 ];
