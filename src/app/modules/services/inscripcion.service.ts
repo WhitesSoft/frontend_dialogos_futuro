@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Inscrito } from '../../core/models/inscrito.models';
 import { Expositor } from '../../core/models/expositor.models';
+import { Startup } from '../../core/models/startup.models';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,10 @@ export class InscripcionService {
 
   getInscritos(): Observable<any> {
     return this.http.get(this.baseUrl + '/api/personas')
+  }
+
+  getStartups(): Observable<Startup[]>{
+    return this.http.get<Startup[]>(this.baseUrl + '/api/startups')
   }
 
   getIdentificadores(): Observable<any> {
@@ -54,6 +59,10 @@ export class InscripcionService {
 
   getExpositor(id: number): Observable<Expositor> {
     return this.http.get<Expositor>(this.baseUrl + `/api/autores/${id}`)
+  }
+
+  saveStartups(id: number, startups: any){
+    return this.http.post<any>(this.baseUrl + `/api/startups/persona/${id}`, startups)
   }
 
   saveUserData(data: any) {

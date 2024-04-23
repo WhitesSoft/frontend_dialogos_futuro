@@ -56,7 +56,7 @@ export const routes: Routes = [
   {
     path: "rating",
     component: RatingComponent,
-    canActivate: [guard]
+    canActivate: [guard], data: { requiredRoles: ['user'] }
   },
   {
     path: "admin",
