@@ -25,8 +25,8 @@
         
       </div>
 
-      <div class="overflow-hidden border rounded-md border-primary">
-        <table class="min-w-full">
+      <div class="overflow-hidden w-full max-w-full  border rounded-md border-primary">
+        <table class="min-w-full max-w-full table-fixed">
           <thead class="bg-primary/30">
             <tr>
               <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
@@ -37,6 +37,9 @@
               </th>
               <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
                 <span>PERSONA ASIGNADA</span>
+              </th>
+              <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
+                <span>ORGANIZACION</span>
               </th>
               <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
                 <span>LIBERAR</span>
@@ -53,6 +56,9 @@
               </td>
               <td class="px-8 py-4 text-sm text-foreground whitespace-nowrap">
                 {{ band.Persona.nombres }}
+              </td>
+              <td class="px-8 py-4 text-sm text-foreground whitespace-nowrap">
+                {{ band.Persona.organizacion }}
               </td>
               <td class="px-8 py-4 text-sm text-foreground whitespace-nowrap">
                 <button class="px-4 py-2 text-white rounded-md bg-primary hover:bg-primary/90"

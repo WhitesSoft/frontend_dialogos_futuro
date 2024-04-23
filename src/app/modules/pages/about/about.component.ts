@@ -48,5 +48,17 @@ export class AboutComponent {
       actividad: "Logistica",
       foto: "https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg"
     }
+    ,
+    {
+      nombre: "Debra Santos",
+      actividad: "Desarrolladora IA",
+      foto: "https://scontent.fvvi1-1.fna.fbcdn.net/v/t1.6435-1/178642581_1173779579741108_789169790344804778_n.jpg?stp=dst-jpg_s200x200&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=QXbElNclmNMAb7GYNk2&_nc_ht=scontent.fvvi1-1.fna&oh=00_AfAcbWMJIOcdgQPlJdOwABbpsymBuv46r_2KVFoqj-twnA&oe=664F9454"
+    }
+    ,
+    {
+      nombre: "Daniel Luque",
+      actividad: "Desarrollador FrontEnd",
+      foto: "https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg"
+    }
   ]
 }
