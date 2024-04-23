@@ -7,7 +7,13 @@
             class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg ps-4 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Filtrar" [(ngModel)]="filter" />
         </div>
-        <div class="mb-4 w-60">
+        <div class="mb-4 w-[50%] flex flex-row ">
+          <button
+          (click)="generarPDFReporte()"
+          class="w-full mx-4 px-4 py-2 text-white rounded-md bg-primary hover:bg-primary/90">
+            Reporte Entrega
+          </button>
+
           <button
           (click)="generarPDF()"
           class="w-full px-4 py-2 text-white rounded-md bg-primary hover:bg-primary/90">
@@ -15,6 +21,8 @@
           </button>
         </div>
 
+
+        
       </div>
 
       <div class="overflow-hidden border rounded-md border-primary">
