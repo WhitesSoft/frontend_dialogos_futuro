@@ -58,7 +58,7 @@ export class AboutComponent {
     {
       nombre: "Daniel Luque",
       actividad: "Desarrollador FrontEnd",
-      foto: "https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg"
+      foto: "../../../../assets/images/daniel.webp"
     }
   ]
 }
