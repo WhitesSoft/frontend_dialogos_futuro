@@ -73,9 +73,6 @@ export class RatingComponent {
         this.encuesta2.push(encuesta)
       });
 
-      console.log(this.encuesta2);
-
-
       const id = JSON.parse(sessionStorage.getItem('user')!).id
       this.inscripcionService.sendStartups(id, this.encuesta2).subscribe(
         data => {
