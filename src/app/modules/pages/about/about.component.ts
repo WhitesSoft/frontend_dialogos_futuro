@@ -12,6 +12,12 @@ export class AboutComponent {
 
 
   lista:any = [
+    
+    {
+      nombre: "Ing. Fernando Cortez",
+      actividad: "Project Manager",
+      foto: "../../../../assets/images/cortez.jpeg"
+    },
     {
       nombre: "Marco Cardozo",
       actividad: "Desarrollador FrontEnd",
