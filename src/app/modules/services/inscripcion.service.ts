@@ -15,7 +15,9 @@ export class InscripcionService {
     private http: HttpClient
   ) { }
 
-  baseUrl: string = 'http://192.168.1.195:3000'
+
+  baseUrl: string = 'https://sceii.dev.404.codes'
+
 
   obtenerIdentificador(qr: any): Observable<any> {
     return this.http.post(this.baseUrl + "/api/login/identificador", qr)
