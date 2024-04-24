@@ -4,4 +4,5 @@ export interface Startup  {
   foto?: string
   descripcion: string;
   voted?: boolean
+  opcion?: string
 };

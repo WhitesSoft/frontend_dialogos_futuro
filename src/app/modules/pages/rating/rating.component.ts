@@ -28,17 +28,11 @@ export class RatingComponent {
   maxSelections = 2;
   selectedCount = 0;
 
-  @ViewChild('radioSi') radioSi!: ElementRef<HTMLInputElement>;
-  @ViewChild('radioPodria') radioPodria!: ElementRef<HTMLInputElement>;
-  @ViewChild('radioTodavia') radioTodavia!: ElementRef<HTMLInputElement>;
-  @ViewChild('radioNo') radioNo!: ElementRef<HTMLInputElement>;
-
-
   constructor(
     private inscripcionService: InscripcionService,
     private toastrService: ToastrService,
     private router: Router
-  ) {  }
+  ) { }
 
   ngAfterViewInit() {
     this.liElements = Array.from(document.querySelectorAll('ul > li'));
@@ -85,18 +79,22 @@ export class RatingComponent {
     // Agrega más startups si lo deseas
   ];
 
-  mostrarSeleccion() {
-    if (this.radioSi.nativeElement.checked) {
-      console.log('Siuuu');
-    } else if (this.radioPodria.nativeElement.checked) {
-      console.log('Podria');
-    } else if (this.radioTodavia.nativeElement.checked) {
-      console.log('Todavía paaa');
-    } else if (this.radioNo.nativeElement.checked) {
-      console.log('nega');
+  onEmpresaSelected(empresa: string) {
+    this.selectedEmpresa.push(empresa)
+    console.log(empresa);
+  }
+
+  enviarRespuestas() {
+
+    const t = this.startups.filter(e => e.opcion !== undefined)
+    if (t.length === this.startups.length) {
+      this.startups.forEach(startup => {
+        console.log(`Startup: ${startup.nombre}, Opción seleccionada: ${startup.opcion}`);
+      });
     } else {
-      console.log('nada');
+      this.toastrService.error('Necesitas responder todas las opciones.', 'Error', { timeOut: 3000, progressBar: true });
     }
+
   }
 
   updateSelectedCount() {
@@ -109,6 +107,7 @@ export class RatingComponent {
     } else {
       if (this.selectedCount < this.maxSelections) {
         this.selectedCount++;
+        this.onEmpresaSelected(this.startups[index].nombre)
       } else {
         this.startups[index].voted = false;
         return;
@@ -119,25 +118,30 @@ export class RatingComponent {
 
   toggleSlide() {
 
-    let startups: any[] = []
-    this.startups.forEach(e => {
-      if (e.voted) {
-        startups.push(e.id)
-      }
-    });
+    if (this.selectedCount >= 1) {
+      let startups: any[] = []
+      this.startups.forEach(e => {
+        if (e.voted) {
+          startups.push(e.id)
+        }
+      });
 
-    const id = JSON.parse(sessionStorage.getItem('user')!).id
-    this.inscripcionService.saveStartups(id, startups).subscribe(
-      data => {
-        this.toastrService.success('Gracias por participar en la encuesta', 'Exito', { timeOut: 3000, progressBar: true });
-      }
-    )
+      const id = JSON.parse(sessionStorage.getItem('user')!).id
+      this.inscripcionService.saveStartups(id, startups).subscribe(
+        data => {
+          this.toastrService.success('Gracias por participar en la encuesta', 'Exito', { timeOut: 3000, progressBar: true });
+        }
+      )
+
+      const qr = sessionStorage.getItem('qr')
+      setTimeout(() => {
+        this.router.navigate([`/profile/${qr}`]);
+      }, 3000);
+    } else {
+      this.toastrService.error('Necesitas seleccionar al menos un proyecto.', 'Error', { timeOut: 3000, progressBar: true });
+    }
 
 
-    const qr = sessionStorage.getItem('qr')
-    setTimeout(() => {
-      this.router.navigate([`/profile/${qr}`]);
-    }, 3000);
   }
 
 }
