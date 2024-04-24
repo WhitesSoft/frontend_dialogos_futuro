@@ -8,6 +8,7 @@ import { Alignment, Margins } from 'pdfmake/interfaces';
 import { BandsPipe } from '../../../core/pipes/bands.pipe';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class ListabandComponent {
 
   constructor(
     private inscripcionServ: InscripcionService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -40,6 +42,10 @@ export class ListabandComponent {
     this.inscripcionServ.getIdentificadoresVacies().subscribe(response => {
       this.listaVacia = Object.values(response);
     })
+  }
+
+  modificar(id: number) {
+    this.router.navigate(['modificar-inscripcion/' + id])
   }
 
   liberarManilla(id: number) {
@@ -172,8 +178,11 @@ export class ListabandComponent {
 
   generarPDFReporte(){
     let listaPDF:any[] = []
+    let xd = this.lista
+    xd.sort(this.compararPorNombre)
+
     listaPDF.push([{text: 'ID BAND', style: 'tableHeader'}, {text: 'NOMBRE', style: 'tableHeader'}, {text: 'ORGANIZACION', style: 'tableHeader'}, {text: 'FIRMA', style: 'tableHeader'}])
-    for(let x of this.lista){
+    for(let x of xd){
 
       listaPDF.push([
         x.id, x.Persona.nombres, x.Persona.organizacion, ""
@@ -226,4 +235,19 @@ export class ListabandComponent {
     }
   }
 
+  compararPorNombre(a: lista, b: lista) {
+    const nombreA = a.Persona.nombres.toUpperCase();
+    const nombreB = b.Persona.nombres.toUpperCase();
+  
+    let comparacion = 0;
+    if (nombreA > nombreB) {
+      comparacion = 1;
+    } else if (nombreA < nombreB) {
+      comparacion = -1;
+    }
+    return comparacion;
+  }
+  
+
 }
+
