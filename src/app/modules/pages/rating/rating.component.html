@@ -1,7 +1,11 @@
-<h3 class="mt-4 mb-8 text-2xl font-bold text-center text-foreground">
-  ¿En que startup invertiría?
+<h3 *ngIf="esDia24()" class="mt-4 mb-8 text-2xl font-bold text-center text-foreground">
+  Después de ver su presentación, selecciona dos de estos proyectos, los que más te hayan gustado.
 </h3>
-<ul class="flex flex-col items-center justify-center gap-y-2 ">
+<h3 *ngIf="esDia25()" class="mt-4 mb-8 text-2xl font-bold text-center text-foreground">
+  ¿Te gustaría invertir y convertirte en socio de alguna de estas startups?
+</h3>
+
+<ul class="flex flex-col items-center justify-center mb-3 gap-y-2">
 
   <li class="w-full sm:max-w-full md:max-w-[40%]" *ngFor="let x of startups; let i = index">
     <input type="checkbox" id="empresa-{{x.id}}" value="true" class="hidden peer" (change)="toggleCheckbox(i)"
@@ -23,6 +27,41 @@
   </li>
 
 </ul>
+
+<div class="bg-background">
+  <div class="flex items-center border rounded mt-9 border-primary-foreground ps-4">
+    <input id="bordered-radio-1" type="radio" value="" name="bordered-radio"
+      class="w-4 h-4 text-primary border-primary focus:ring-primary focus:ring-2 ring-offset-primary" #radioSi>
+    <label for="bordered-radio-1"
+      class="w-full py-4 text-sm font-medium text-foreground ms-2 focus:ring-primary ring-offset-primary peer-checked:border-primary peer-checked:bg-primary">Sí</label>
+  </div>
+  <div class="flex items-center border border-primary-foreground ps-4">
+    <input id="bordered-radio-2" type="radio" value="" name="bordered-radio"
+      class="w-4 h-4 text-primary border-primary focus:ring-primary focus:ring-2 ring-offset-primary" #radioPodria>
+    <label for="bordered-radio-2" class="w-full py-4 text-sm font-medium text-foreground ms-2">Podría ser</label>
+  </div>
+
+  <div class="flex items-center border rounded border-primary-foreground ps-4">
+    <input id="bordered-radio-3" type="radio" value="" name="bordered-radio"
+      class="w-4 h-4 text-primary border-primary focus:ring-primary focus:ring-2 ring-offset-primary" #radioTodavia>
+    <label for="bordered-radio-3" class="w-full py-4 text-sm font-medium text-foreground ms-2">Todavía no</label>
+  </div>
+
+  <div class="flex items-center border rounded border-primary-foreground ps-4">
+    <input id="bordered-radio-4" type="radio" value="" name="bordered-radio"
+      class="w-4 h-4 text-primary border-primary focus:ring-primary focus:ring-2 ring-offset-primary" #radioNo>
+    <label for="bordered-radio-4" class="w-full py-4 text-sm font-medium text-foreground ms-2">No</label>
+  </div>
+</div>
+
+<div class="flex items-center justify-center mt-8">
+  <button
+    class="px-4 py-2 font-bold rounded bg-primary hover:bg-primary/80 text-white w-full max-w-[40%]"
+    (click)="mostrarSeleccion()">
+    Aceptar
+  </button>
+</div>
+
 
 <div class="flex items-center justify-center mt-8">
   <button [disabled]="!selectedEmpresa"
