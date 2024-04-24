@@ -30,6 +30,7 @@ export class ControladorGuard implements CanActivate {
       this.user = 'user'
     }
 
+
     if (!token) {
       if (requiredRoles && requiredRoles.includes('sociedad')) {
         this.router.navigate(['/login']);
@@ -37,8 +38,14 @@ export class ControladorGuard implements CanActivate {
         this.router.navigate(['/profile/404']);
       }
       return false;
+    }else {
+      if (this.admin === 'sociedad' && requiredRoles.includes('sociedad')) {
+        return true
+      } else {
+        this.router.navigate(['/login']);
+      }
     }
-    return true
+    return false
   }
 
 }
