@@ -1,0 +1,48 @@
+<div class="flex flex-col mt-8 w-[80%] m-auto overflow-hidden">
+  <div class="-mx-4 -my-2 overflow-x-hidden sm:-mx-6 lg:-mx-8 ">
+    <div class=" inline-block min-w-full py-2 align-middle md:px-6 lg:px-8 overflow-hidden">
+
+      <div class="w-80 mb-4">
+        <input type="search" id="default-search" class="block w-full p-2 ps-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Filtrar" [(ngModel)]="filter" />
+      </div>
+
+      <div class="border rounded-md border-primary ">
+
+        <table class="min-w-full ">
+          <thead class="bg-primary/30 ">
+            <tr>
+              <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
+                <span>ID</span>
+              </th>
+              <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
+                <span>NOMBRES</span>
+              </th>
+              <th scope="col" class="px-8 py-3.5 text-sm font-normal text-left rtl:text-right text-foreground">
+                <span>Opciones</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-700 bg-sidebar-color">
+
+            <tr *ngFor="let inscrito of inscritos | inscritos:filter">
+
+              <td class="px-8 py-4 text-sm text-foreground whitespace-nowrap">
+                {{ inscrito.id }} 
+              </td>
+              <td class="px-8 py-4 text-sm text-foreground whitespace-nowrap">
+                {{ inscrito.nombres | titlecase }}
+              </td>
+              <td class="px-8 py-4 text-sm text-foreground whitespace-nowrap">
+                <button class="px-4 py-2 text-white rounded-md bg-primary hover:bg-primary/90" (click)="modificar(inscrito.id!)">Modificar</button>
+              </td>
+
+
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

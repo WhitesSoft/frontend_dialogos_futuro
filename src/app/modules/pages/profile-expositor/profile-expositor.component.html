@@ -1,0 +1,22 @@
+
+<div class="container m-auto">
+  <div class="flex flex-wrap items-center justify-center w-full h-full mt-2 mb-2 bg-background">
+    <div class="w-full overflow-hidden md:h-45 sm:h-45">
+      <img class="w-full"
+        src="../../../../assets/images/fondo_perfil.jpg"
+        alt="" />
+    </div>
+    <div class="flex items-center justify-center w-full px-5 -mt-12">
+      <img class="w-32 h-32 p-2 rounded-full bg-primary" src="{{ expositor.foto }}" alt="" />
+    </div>
+    <div>
+      <div class="mt-8 overflow-auto text-center px-7">
+        <h2 class="text-3xl font-bold text-foreground">{{expositor.autor}}</h2>
+        <p class="mt-8 mb-8 text-sm text-justify text-muted-foreground">
+          {{expositor.bibliografia}}
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>
