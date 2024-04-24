@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { InscripcionService } from '../../services/inscripcion.service';
 
 import moment from 'moment';
+import { Encuesta } from '../../../core/models/encuesta.models';
 
 @Component({
   selector: 'app-rating',
@@ -23,7 +24,9 @@ export class RatingComponent {
   selectedEmpresa: string[] = [];
   isExpanded: boolean = false;
   liElements: HTMLLIElement[];
-  // startups: Startup[] = []
+  startups: Startup[] = []
+  encuesta: Encuesta[] = []
+  encuesta2: Encuesta[] = []
   maxSelections = 2;
   selectedCount = 0;
 
@@ -55,39 +58,35 @@ export class RatingComponent {
     return fechaActual.isSame(fecha25Abril, 'day')
   }
 
-  startups: Startup[] = [
-    {
-      id: 1,
-      nombre: "TechCo",
-      descripcion: "TechCo es una startup que se especializa en el desarrollo de software personalizado para empresas de todos los tamaños.",
-      voted: false
-    },
-    {
-      id: 2,
-      nombre: "EcoEnergy",
-      descripcion: "EcoEnergy es una startup que se dedica a la investigación y desarrollo de tecnologías renovables para la generación de energía limpia.",
-      voted: false
-    },
-    {
-      id: 3,
-      nombre: "FoodHub",
-      descripcion: "FoodHub es una startup que conecta a productores locales de alimentos con consumidores a través de una plataforma en línea.",
-      voted: false
-    },
-    // Agrega más startups si lo deseas
-  ];
-
   onEmpresaSelected(empresa: string) {
     this.selectedEmpresa.push(empresa)
-    console.log(empresa);
   }
 
   enviarRespuestas() {
     const t = this.startups.filter(e => e.opcion !== undefined)
     if (t.length === this.startups.length) {
       this.startups.forEach(startup => {
-        console.log(`Startup: ${startup.nombre}, Opción seleccionada: ${startup.opcion}`);
+        const encuesta: Encuesta = {
+          startup_id: startup.id!,
+          opcion: Number(startup.opcion)
+        }
+        this.encuesta2.push(encuesta)
       });
+
+      console.log(this.encuesta2);
+
+
+      const id = JSON.parse(sessionStorage.getItem('user')!).id
+      this.inscripcionService.sendStartups(id, this.encuesta2).subscribe(
+        data => {
+          this.toastrService.success('Gracias por participar en la encuesta', 'Exito', { timeOut: 3000, progressBar: true });
+        }
+      )
+
+      const qr = sessionStorage.getItem('qr')
+      setTimeout(() => {
+        this.router.navigate([`/profile/${qr}`]);
+      }, 3000);
     } else {
       this.toastrService.error('Necesitas responder todas las opciones.', 'Error', { timeOut: 3000, progressBar: true });
     }
@@ -115,15 +114,18 @@ export class RatingComponent {
   toggleSlide() {
 
     if (this.selectedCount >= 1) {
-      let startups: any[] = []
       this.startups.forEach(e => {
         if (e.voted) {
-          startups.push(e.id)
+          const nuevaStartup: Encuesta = {
+            startup_id: e.id!,
+            opcion: 1!
+          };
+          this.encuesta.push(nuevaStartup)
         }
       });
 
       const id = JSON.parse(sessionStorage.getItem('user')!).id
-      this.inscripcionService.saveStartups(id, startups).subscribe(
+      this.inscripcionService.sendStartups(id, this.encuesta).subscribe(
         data => {
           this.toastrService.success('Gracias por participar en la encuesta', 'Exito', { timeOut: 3000, progressBar: true });
         }

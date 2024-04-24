@@ -14,6 +14,7 @@ export class ProfileExpositorComponent {
 
   expositor: Expositor
 
+
   constructor(
     private inscripcionService: InscripcionService,
     private activateRoute: ActivatedRoute

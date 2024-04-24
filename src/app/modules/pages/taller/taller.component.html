@@ -8,6 +8,11 @@
             [ngClass]="[(dataForm.get('nombre')?.invalid  && (dataForm.get('nombre')?.dirty || dataForm.get('nombre')?.touched))? 'bg-red-50 border border-red-500 text-red-900 placeholder-red-700' : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-400' ]"
             />
 
+            <div *ngIf="dataForm.get('nombre')?.invalid && (dataForm.get('nombre')?.dirty || dataForm.get('nombre')?.touched)" class="text-red-500 text-sm mt-1">
+                <div *ngIf="dataForm.get('nombre')?.hasError('required')">
+                    Nombre es requerido.
+                </div>
+            </div>
     </div>
 
     <div class="mb-5">
@@ -19,6 +24,11 @@
             [ngClass]="[(dataForm.get('residencia')?.invalid  && (dataForm.get('residencia')?.dirty || dataForm.get('residencia')?.touched))? 'bg-red-50 border border-red-500 text-red-900 placeholder-red-700' : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-400' ]"
             />
 
+            <div *ngIf="dataForm.get('residencia')?.invalid && (dataForm.get('residencia')?.dirty || dataForm.get('residencia')?.touched)" class="text-red-500 text-sm mt-1">
+                <div *ngIf="dataForm.get('residencia')?.hasError('required')">
+                    Residencia es requerido.
+                </div>
+            </div>
     </div>
 
     <div class="mb-5">
@@ -31,6 +41,9 @@
             />
 
             <div *ngIf="dataForm.get('correo')?.invalid && (dataForm.get('correo')?.dirty || dataForm.get('correo')?.touched)" class="text-red-500 text-sm mt-1">
+                <div *ngIf="dataForm.get('correo')?.hasError('required')">
+                    Correo es requerido.
+                </div>
 
                 <div *ngIf="dataForm.get('correo')?.hasError('email')">
                     Formato incorrecto
@@ -55,6 +68,11 @@
             [ngClass]="[(dataForm.get('ci')?.invalid  && (dataForm.get('ci')?.dirty || dataForm.get('ci')?.touched))? 'bg-red-50 border border-red-500 text-red-900 placeholder-red-700' : 'bg-gray-50 border-gray-300 text-gray-900 placeholder-gray-400' ]"
             />
 
+            <div *ngIf="dataForm.get('ci')?.invalid && (dataForm.get('ci')?.dirty || dataForm.get('ci')?.touched)" class="text-red-500 text-sm mt-1">
+                <div *ngIf="dataForm.get('ci')?.hasError('required')">
+                    Documento de identidad es requerido.
+                </div>
+            </div>
     </div>
 
     <div class="mb-5">
@@ -67,6 +85,9 @@
             />
 
             <div *ngIf="dataForm.get('celular')?.invalid && (dataForm.get('celular')?.dirty || dataForm.get('celular')?.touched)" class="text-red-500 text-sm mt-1">
+                <div *ngIf="dataForm.get('celular')?.hasError('required')">
+                    Celular es requerido.
+                </div>
 
                 <div *ngIf="dataForm.get('celular')?.hasError('pattern')">
                     Formato no valido.

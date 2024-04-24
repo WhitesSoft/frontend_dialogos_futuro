@@ -15,7 +15,7 @@ export class InscripcionService {
     private http: HttpClient
   ) { }
 
-  baseUrl: string = 'http://192.168.1.195:3000'
+  baseUrl: string = 'https://8d3j97mk-3000.brs.devtunnels.ms'
 
   obtenerIdentificador(qr: any): Observable<any> {
     return this.http.post(this.baseUrl + "/api/login/identificador", qr)
@@ -65,7 +65,7 @@ export class InscripcionService {
     return this.http.get<Expositor>(this.baseUrl + `/api/autores/${id}`)
   }
 
-  saveStartups(id: number, startups: any){
+  sendStartups(id: number, startups: any){
     return this.http.post<any>(this.baseUrl + `/api/startups/persona/${id}`, startups)
   }
 

@@ -18,6 +18,7 @@ import { NombrePipe } from '../../../core/pipes/nombre.pipe';
 export class ProfileComponent {
 
   inscrito: Inscrito
+  encuestado: boolean
 
   constructor(
     private inscripcionService: InscripcionService,
@@ -27,12 +28,12 @@ export class ProfileComponent {
 
   async ngOnInit() {
     await this.getInscrito()
+    this.encuestado = JSON.parse(sessionStorage.getItem('user')!).encuestado
   }
   async getInscrito() {
 
     this.activateRoute.params.subscribe(params => {
       const id = params['id']
-      console.log(id);
 
       const body: any = {
         codigo_qr: id
