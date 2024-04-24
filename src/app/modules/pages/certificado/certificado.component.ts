@@ -22,12 +22,12 @@ export class CertificadoComponent {
 
   ngOnInit() {
     this.dataForm = new FormGroup({
-      nombre: new FormControl('', [Validators.required]),
-      residencia: new FormControl('', [Validators.required]),
-      correo: new FormControl('', [Validators.required, Validators.email]),
+      nombre: new FormControl('', []),
+      residencia: new FormControl('', []),
+      correo: new FormControl('', [Validators.email]),
       organizacion: new FormControl('', []),
-      ci: new FormControl('', [Validators.required]),
-      celular: new FormControl('', [Validators.required, Validators.pattern('[- +()0-9]+')]),
+      ci: new FormControl('', []),
+      celular: new FormControl('', [Validators.pattern('[- +()0-9]+')]),
     })
   }
 
