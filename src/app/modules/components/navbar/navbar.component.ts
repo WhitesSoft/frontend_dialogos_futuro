@@ -1,13 +1,14 @@
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { NgClass } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { ThemeService } from '../../../core/services/theme.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [NgClass, AngularSvgIconModule],
+  imports: [NgClass, AngularSvgIconModule, NgIf],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss', animations: [
     trigger('openClose', [
@@ -70,7 +71,8 @@ export class NavbarComponent implements OnInit {
    themeMode = ['light', 'dark'];
 
   constructor(
-    public themeService: ThemeService
+    public themeService: ThemeService,
+    private router: Router
   ){
 
   }
@@ -92,6 +94,25 @@ export class NavbarComponent implements OnInit {
     this.themeService.theme.update((theme) => {
       return { ...theme, color: color };
     });
+  }
+
+  mostrarRutas(): boolean {
+    const rutaActual = this.router.url
+    if(sessionStorage.getItem('rol') === 'sociedad'){
+      return rutaActual === '/lista-bands' || 
+      rutaActual === '/lista-inscritos' || 
+      rutaActual === '/plan-taller' || 
+      rutaActual === '/plan-gratuito' || 
+      rutaActual === '/plan-certificado' || 
+      rutaActual === '/lista' || 
+      rutaActual === "modificar-inscripcion/:id";
+    }
+
+    return false
+  }
+
+  send(){
+    this.router.navigate(['/admin'])
   }
 
 }

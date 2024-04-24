@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InscripcionService } from '../../services/inscripcion.service';
@@ -19,21 +19,24 @@ export class PlanModificarComponent {
 
   dataForm!: FormGroup
 
+  id:any
+
   constructor(
     private inscripcionService: InscripcionService,
     private toastrService: ToastrService,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.dataForm = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
-      residencia: new FormControl('', [Validators.required]),
-      correo: new FormControl('', [Validators.required, Validators.email]),
-      organizacion: new FormControl('', []),
-      ci: new FormControl('', [Validators.required]),
-      celular: new FormControl('', [Validators.required, Validators.pattern('[- +()0-9]+')]),
-      plan: new FormControl('', [Validators.required])
+      residencia: new FormControl(''),
+      correo: new FormControl(''),
+      organizacion: new FormControl(''),
+      ci: new FormControl('' ),
+      celular: new FormControl(''),
+      plan: new FormControl('')
     })
 
     this.getInscrito()
@@ -43,8 +46,8 @@ export class PlanModificarComponent {
   getInscrito() {
 
     this.activateRoute.params.subscribe(params => {
-      const id = params['id']
-      this.inscripcionService.getInscrito(Number(id)).subscribe(
+      this.id = params['id']
+      this.inscripcionService.getInscrito(Number(this.id)).subscribe(
         data => {
           this.dataForm.get('nombre')?.setValue(data.nombres),
             this.dataForm.get('residencia')?.setValue(data.residencia),
@@ -70,8 +73,9 @@ export class PlanModificarComponent {
       celular: this.dataForm.get('celular')?.value,
     }
 
-    this.inscripcionService.addInscrito(sendData).subscribe(response => {
-      this.toastrService.success('Inscripcion exitosa', 'Exito', { timeOut: 3000, progressBar: true });
+    this.inscripcionService.moodificarInscrito(this.id, sendData).subscribe(response => {
+      this.toastrService.success('Modificacion exitosa', 'Exito', { timeOut: 3000, progressBar: true });
+      this.router.navigate(['/lista-bands'])
     })
   }
 

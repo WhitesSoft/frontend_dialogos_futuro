@@ -25,17 +25,17 @@ export class TallerComponent {
   ngOnInit() {
     this.dataForm = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
-      residencia: new FormControl('', [Validators.required]),
-      correo: new FormControl('', [Validators.required, Validators.email]),
-      organizacion: new FormControl('', []),
-      ci: new FormControl('', [Validators.required]),
-      celular: new FormControl('', [Validators.required, Validators.pattern('[- +()0-9]+')]),
+      residencia: new FormControl(''),
+      correo: new FormControl(''),
+      organizacion: new FormControl(''),
+      ci: new FormControl(''),
+      celular: new FormControl(''),
     })
   }
 
   save() {
     let sendData: Inscrito = {
-      nombres: this.dataForm.get('nombre')?.value,
+      nombres: (this.dataForm.get('nombre')?.value).toUpperCase(),
       residencia: this.dataForm.get('residencia')?.value,
       correo: this.dataForm.get('correo')?.value,
       organizacion: this.dataForm.get('organizacion')?.value,
@@ -48,7 +48,7 @@ export class TallerComponent {
       this.toastrService.success('Manilla asignada:  ' + response.id, 'Exito', { timeOut: 3000, progressBar: true });
       this.dataForm.reset()
     }, err => {
-      this.toastrService.error('Persona ya registrada', 'Error', { timeOut: 3000, progressBar: true });
+      this.toastrService.error("Error en el registro", 'Error', { timeOut: 3000, progressBar: true });
     })
   }
 }
