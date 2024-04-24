@@ -54,7 +54,7 @@ export class ProfileComponent {
             }
           )
         }, err => {
-          this.router.navigate(['/error'])
+          //this.router.navigate(['/error'])
         }
       )
     })

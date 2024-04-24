@@ -5,39 +5,70 @@ import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/route
 import { ThemeService } from './core/services/theme.service';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { NavbarComponent } from './modules/components/navbar/navbar.component';
+import { FormsModule, NgModel } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { InscripcionService } from './modules/services/inscripcion.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgClass, AngularSvgIconModule, NavbarComponent, RouterLink],
+  imports: [
+    RouterOutlet,
+    NgClass,
+    AngularSvgIconModule,
+    NavbarComponent,
+    RouterLink,
+    FormsModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent implements OnInit{
-  title = 'frontend_sceii';
+export class AppComponent implements OnInit {
 
-  constructor(private router:Router){
-    
+  openTab = 1;
+  title = 'frontend_sceii';
+  isModalVisible: boolean = false;
+  textoArea = ''
+
+
+  constructor(
+    private router: Router,
+    private toastrService: ToastrService,
+    private inscripcionService: InscripcionService
+  ) { }
+
+  obtener(event: any): string {
+    return event.target.value;
   }
 
-  
-  isModalVisible: boolean = false;
+  enviarSugerencia() {
+
+    if (this.textoArea.length !== 0) {
+      const id = JSON.parse(sessionStorage.getItem('user')!).id
+      this.inscripcionService.sendSugerencia(id, this.textoArea).subscribe(
+        data => {
+          this.toastrService.error('Gracias por enviar su sugerencia.', 'Éxito', { timeOut: 3000, progressBar: true })
+          this.toggleModal()
+        }
+      )
+    } else {
+      this.toastrService.error('Debes escribir una sugerencia.', 'Error', { timeOut: 3000, progressBar: true })
+    }
+  }
 
   toggleModal() {
     this.isModalVisible = !this.isModalVisible;
   }
 
-  openTab = 1;
+
 
   ngOnInit(): void {
-     if(sessionStorage.getItem('currentTab')){
+    if (sessionStorage.getItem('currentTab')) {
       this.openTab = Number(sessionStorage.getItem('currentTab'));
-     }
+    }
   }
 
-
-
-  toggleTabs($tabNumber: number){
+  toggleTabs($tabNumber: number) {
     this.openTab = $tabNumber;
     sessionStorage.setItem('currentTab', this.openTab.toString());
   }

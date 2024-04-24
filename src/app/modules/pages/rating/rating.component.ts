@@ -1,11 +1,10 @@
-import { CommonModule, DatePipe } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { Startup } from '../../../core/models/startup.models';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { InscripcionService } from '../../services/inscripcion.service';
-import { MomentModule } from 'ngx-moment';
 
 import moment from 'moment';
 
@@ -56,7 +55,6 @@ export class RatingComponent {
     return fechaActual.isSame(fecha25Abril, 'day')
   }
 
-
   startups: Startup[] = [
     {
       id: 1,
@@ -85,7 +83,6 @@ export class RatingComponent {
   }
 
   enviarRespuestas() {
-
     const t = this.startups.filter(e => e.opcion !== undefined)
     if (t.length === this.startups.length) {
       this.startups.forEach(startup => {
@@ -94,7 +91,6 @@ export class RatingComponent {
     } else {
       this.toastrService.error('Necesitas responder todas las opciones.', 'Error', { timeOut: 3000, progressBar: true });
     }
-
   }
 
   updateSelectedCount() {
@@ -140,8 +136,6 @@ export class RatingComponent {
     } else {
       this.toastrService.error('Necesitas seleccionar al menos un proyecto.', 'Error', { timeOut: 3000, progressBar: true });
     }
-
-
   }
 
 }

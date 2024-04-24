@@ -45,8 +45,7 @@ export class TallerComponent {
     }
 
     this.inscripcionService.addInscrito(sendData).subscribe(response => {
-      this.toastrService.success('Manilla asignada:  '+response.id, 'Exito', { timeOut: 3000, progressBar: true });
-      console.log(response)
+      this.toastrService.success('Manilla asignada:  ' + response.id, 'Exito', { timeOut: 3000, progressBar: true });
       this.dataForm.reset()
     }, err => {
       this.toastrService.error('Persona ya registrada', 'Error', { timeOut: 3000, progressBar: true });

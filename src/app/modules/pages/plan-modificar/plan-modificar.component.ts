@@ -44,23 +44,16 @@ export class PlanModificarComponent {
 
     this.activateRoute.params.subscribe(params => {
       const id = params['id']
-      console.log(id);
       this.inscripcionService.getInscrito(Number(id)).subscribe(
         data => {
-console.log(data.plan)
-
           this.dataForm.get('nombre')?.setValue(data.nombres),
-          this.dataForm.get('residencia')?.setValue(data.residencia),
-          this.dataForm.get('correo')?.setValue(data.correo),
-          this.dataForm.get('organizacion')?.setValue(data.organizacion),
-          this.dataForm.get('ci')?.setValue(data.ci),
-          this.dataForm.get('celular')?.setValue(data.celular),
-          this.dataForm.get('plan')?.setValue(data.plan)
-        },
-        err => {
-          console.log('no se puede traer uwu', err);
+            this.dataForm.get('residencia')?.setValue(data.residencia),
+            this.dataForm.get('correo')?.setValue(data.correo),
+            this.dataForm.get('organizacion')?.setValue(data.organizacion),
+            this.dataForm.get('ci')?.setValue(data.ci),
+            this.dataForm.get('celular')?.setValue(data.celular),
+            this.dataForm.get('plan')?.setValue(data.plan)
         }
-
       )
     })
 
@@ -79,7 +72,6 @@ console.log(data.plan)
 
     this.inscripcionService.addInscrito(sendData).subscribe(response => {
       this.toastrService.success('Inscripcion exitosa', 'Exito', { timeOut: 3000, progressBar: true });
-      console.log(response)
     })
   }
 

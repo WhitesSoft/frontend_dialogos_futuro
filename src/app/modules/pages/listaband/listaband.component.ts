@@ -27,8 +27,6 @@ export class ListabandComponent {
     private toastrService: ToastrService
   ) { }
 
-
-
   ngOnInit() {
     this.getList();
   }
@@ -95,7 +93,7 @@ export class ListabandComponent {
         style: 'header'
       },)
     }
-    
+
     const pdfDefinition: any = {
       pageSize: {
         width: 612.36,
@@ -103,7 +101,7 @@ export class ListabandComponent {
       },
       content: listaPDF
     }
-    
+
 
     const pdf = pdfMake.createPdf(pdfDefinition, pdfMake.tableLayouts , pdfMake.fonts ,pdfFonts.pdfMake.vfs);
     pdf.open();
@@ -130,13 +128,13 @@ export class ListabandComponent {
           style: 'header'
         },
         {
-        
+
         table: {
           heights: 30,
           widths: [50, 150, 150, 120],
           headerRows: 1,
 				  body: listaPDF,
-          dontBreakRows: true, 
+          dontBreakRows: true,
         },
         layout: 'lightHorizontalLines'
       }], styles: this.style
