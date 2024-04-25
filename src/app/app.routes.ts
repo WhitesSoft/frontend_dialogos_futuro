@@ -16,6 +16,7 @@ import { AboutComponent } from './modules/pages/about/about.component';
 import { ControladorGuard as guard } from './core/guards/controlador.guard';
 import { ErrorComponent } from './modules/pages/error/error.component';
 import { CronogramaComponent } from './modules/pages/cronograma/cronograma.component';
+import { ResultadosComponent } from './modules/pages/resultados/resultados.component';
 
 
 
@@ -94,5 +95,10 @@ export const routes: Routes = [
   {
     path: "cronograma",
     component: CronogramaComponent,
+  },
+  {
+    path: "resultados",
+    component: ResultadosComponent,
+    canActivate: [guard], data: { requiredRoles: ['sociedad'] }
   },
 ];

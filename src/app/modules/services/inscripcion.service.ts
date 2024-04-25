@@ -16,7 +16,8 @@ export class InscripcionService {
   ) { }
 
 
-  baseUrl: string = 'https://sceii.dev.404.codes'
+  //baseUrl: string = 'https://sceii.dev.404.codes'
+  baseUrl: string = 'https://8d3j97mk-3000.brs.devtunnels.ms'
 
 
   obtenerIdentificador(qr: any): Observable<any> {
@@ -69,6 +70,10 @@ export class InscripcionService {
 
   getExpositor(id: number): Observable<Expositor> {
     return this.http.get<Expositor>(this.baseUrl + `/api/autores/${id}`)
+  }
+
+  getResultados(): Observable<Startup[]> {
+    return this.http.get<Startup[]>(this.baseUrl + '/api/startups/resultados/last')
   }
 
   sendStartups(id: number, startups: any){
