@@ -8,4 +8,5 @@ export interface Inscrito {
   ci: string;
   plan: string;
   celular: string;
+  encuestado?: boolean;
 }

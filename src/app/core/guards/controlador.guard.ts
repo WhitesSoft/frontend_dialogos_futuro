@@ -38,11 +38,15 @@ export class ControladorGuard implements CanActivate {
         this.router.navigate(['/profile/404']);
       }
       return false;
-    }else {
+    } else {
       if (this.admin === 'sociedad' && requiredRoles.includes('sociedad')) {
         return true
       } else {
-        this.router.navigate(['/login']);
+        if (this.user === 'user' && requiredRoles.includes('user')) {
+          return true
+        } else {
+          this.router.navigate(['/login']);
+        }
       }
     }
     return false

@@ -28,8 +28,8 @@ export class ProfileComponent {
 
   async ngOnInit() {
     await this.getInscrito()
-    this.encuestado = JSON.parse(sessionStorage.getItem('user')!).encuestado
   }
+
   async getInscrito() {
 
     this.activateRoute.params.subscribe(params => {
@@ -47,15 +47,13 @@ export class ProfileComponent {
           this.inscripcionService.getInscritoQr(id).subscribe(
             data => {
               this.inscrito = data
+              this.encuestado = data.encuestado!
               this.inscripcionService.saveAdmin('user')
               this.inscripcionService.saveUserData(this.inscrito)
-            },
-            err => {
-              console.log('Error obteniendo data', err);
             }
           )
         }, err => {
-          //this.router.navigate(['/error'])
+          this.router.navigate(['/error'])
         }
       )
     })
