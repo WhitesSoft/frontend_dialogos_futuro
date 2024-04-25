@@ -5,4 +5,5 @@ export interface Startup  {
   descripcion: string;
   voted?: boolean
   opcion?: number
+  totales_afirmativos?: number
 };
