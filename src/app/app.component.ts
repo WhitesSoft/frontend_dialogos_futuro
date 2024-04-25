@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
       const id = JSON.parse(sessionStorage.getItem('user')!).id
       this.inscripcionService.sendSugerencia(id, this.textoArea).subscribe(
         data => {
-          this.toastrService.error('Gracias por enviar su sugerencia.', 'Éxito', { timeOut: 3000, progressBar: true })
+          this.toastrService.success('Gracias por enviar su sugerencia.', 'Éxito', { timeOut: 3000, progressBar: true })
           this.toggleModal()
         }
       )

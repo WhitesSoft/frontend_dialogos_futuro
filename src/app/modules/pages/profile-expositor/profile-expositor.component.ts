@@ -27,7 +27,6 @@ export class ProfileExpositorComponent {
 
     this.activateRoute.params.subscribe(params => {
       const id = params['id']
-      console.log(id);
       this.inscripcionService.getExpositor(id).subscribe(
         data => {
           this.expositor = data
