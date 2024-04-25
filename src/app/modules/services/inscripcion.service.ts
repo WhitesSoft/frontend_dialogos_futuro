@@ -16,8 +16,8 @@ export class InscripcionService {
   ) { }
 
 
-  //baseUrl: string = 'https://sceii.dev.404.codes'
-  baseUrl: string = 'https://8d3j97mk-3000.brs.devtunnels.ms'
+  baseUrl: string = 'https://sceii.dev.404.codes'
+  //baseUrl: string = 'https://8d3j97mk-3000.brs.devtunnels.ms'
 
 
   obtenerIdentificador(qr: any): Observable<any> {
