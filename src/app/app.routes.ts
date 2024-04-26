@@ -17,6 +17,7 @@ import { ControladorGuard as guard } from './core/guards/controlador.guard';
 import { ErrorComponent } from './modules/pages/error/error.component';
 import { CronogramaComponent } from './modules/pages/cronograma/cronograma.component';
 import { ResultadosComponent } from './modules/pages/resultados/resultados.component';
+import { ResultadosLastComponent } from './modules/pages/resultados-last/resultados-last.component';
 
 
 
@@ -99,6 +100,11 @@ export const routes: Routes = [
   {
     path: "resultados",
     component: ResultadosComponent,
+    canActivate: [guard], data: { requiredRoles: ['sociedad'] }
+  },
+  {
+    path: "resultados-last",
+    component: ResultadosLastComponent,
     canActivate: [guard], data: { requiredRoles: ['sociedad'] }
   },
 ];

@@ -1,11 +1,11 @@
 <h3 class="mt-4 mb-8 text-2xl font-bold text-center text-foreground">
-  Resultados de la encuesta 24/04/2024
+  Resultados de la encuesta 25/04/2024
 </h3>
 <ul class="flex flex-col items-center justify-center mb-3 gap-y-2">
 
   <li class="w-full sm:max-w-full md:max-w-[40%]" *ngFor="let x of startups; let i = index">
-    <ng-container *ngIf="x.fecha == '2024-04-24'">
-    <input type="checkbox" id="empresa-{{x.id}}" value="true" class="hidden peer" />
+    <ng-container *ngIf="x.fecha == '2024-04-25'">
+      <input type="checkbox" id="empresa-{{x.id}}" value="true" class="hidden peer" />
     <label for="empresa-{{x.id}}"
       class="flex flex-col items-center mt-5 border rounded-lg shadow border-primary bg-background md:w-full md:flex-row md:max-w-full hover:bg-background/80 peer-checked:border-primary">
       <img class="object-cover w-full rounded-t-lg h-52 md:max-h-[10%] md:w-48 md:rounded-none md:rounded-s-lg"
@@ -15,7 +15,16 @@
           {{ x.nombre }}
         </h5>
         <h3 class="mb-2 overflow-hidden font-bold tracking-tight text-justify text-md text-muted-foreground">
-          Total de votos: {{ x.totales_afirmativos }}
+          Total de votos (Sí): {{ x.votos_totales![0].total }}
+        </h3>
+        <h3 class="mb-2 overflow-hidden font-bold tracking-tight text-justify text-md text-muted-foreground">
+          Total de votos (Podría ser) {{ x.votos_totales![1].total }}
+        </h3>
+        <h3 class="mb-2 overflow-hidden font-bold tracking-tight text-justify text-md text-muted-foreground">
+          Total de votos (Todavía no): {{ x.votos_totales![2].total }}
+        </h3>
+        <h3 class="mb-2 overflow-hidden font-bold tracking-tight text-justify text-md text-muted-foreground">
+          Total de votos (No): {{ x.votos_totales![3].total }}
         </h3>
       </div>
     </label>
